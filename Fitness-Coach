@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>דניאל כהן - מאמן כושר אישי | אימונים מותאמים אישית</title>
+    <meta name="description" content="מאמן כושר אישי מוסמך עם ניסיון של 8 שנים. תוכניות אימון מותאמות אישית, מחשבוני BMI ו-BMR, והדרכה תזונתית מקצועית.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #059669;
+            --primary-blue: #0ea5e9;
+            --primary-orange: #f97316;
+            --accent-yellow: #eab308;
+            --accent-red: #ef4444;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --shadow-soft: 0 10px 40px rgba(0,0,0,0.1);
+            --shadow-medium: 0 20px 60px rgba(0,0,0,0.15);
+            --border-radius: 16px;
+            --border-radius-large: 24px;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --gradient-primary: linear-gradient(135deg, #059669 0%, #0ea5e9 100%);
+            --gradient-secondary: linear-gradient(135deg, #f97316 0%, #eab308 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .header.scrolled {
+            background: rgba(5, 150, 105, 0.95);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .cta-button {
+            background: var(--gradient-secondary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(5,150,105,0.9), rgba(14,165,233,0.9)), 
+                        url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--gradient-secondary);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: var(--white);
+            padding: 4rem 0;
+            margin-top: -50px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius-large);
+            box-shadow: var(--shadow-soft);
+            text-align: center;
+            border: 1px solid rgba(5,150,105,0.1);
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .stat-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 0;
+            background: var(--bg-light);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-badge {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .section-description {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: var(--border-radius-large);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            border: 1px solid rgba(5,150,105,0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .service-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .service-content {
+            padding: 2rem;
+        }
+
+        .service-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .service-description {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features li {
+            padding: 0.3rem 0;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            color: var(--primary-green);
+            font-weight: bold;
+        }
+
+        .service-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+
+        /* Calculators Section */
+        .calculators {
+            padding: 6rem 0;
+            background: var(--white);
+        }
+
+        .calculators-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .calculator-card {
+            background: var(--bg-light);
+            border-radius: var(--border-radius-large);
+            padding: 2rem;
+            box-shadow: var(--shadow-soft);
+            border: 2px solid var(--primary-green);
+        }
+
+        .calculator-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-green);
+        }
+
+        .calculator-description {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(5,150,105,0.1);
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            background: white;
+            transition: var(--transition);
+        }
+
+        .calculate-btn {
+            width: 100%;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .result {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: var(--border-radius);
+            border: 2px solid var(--primary-green);
+            display: none;
+        }
+
+        .result.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+
+        .result-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+
+        .result-description {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 0;
+            background: var(--gradient-primary);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .contact-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .contact-description {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .contact-info {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius-large);
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            color: #9ca3af;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 2rem;
+            color: #6b7280;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .calculators-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="nav-container">
+            <div class="logo">דניאל כהן</div>
+            <nav class="nav-links">
+                <a href="#home">בית</a>
+                <a href="#services">שירותים</a>
+                <a href="#calculators">מחשבונים</a>
+                <a href="#contact">צור קשר</a>
+            </nav>
+            <a href="#contact" class="cta-button">🏋️ אימון ראשון חינם</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">💪 מאמן כושר מוסמך</div>
+            <h1 class="hero-title">דניאל כהן</h1>
+            <p class="hero-subtitle">
+                מאמן כושר אישי עם 8 שנות ניסיון. תוכניות אימון מותאמות אישית, 
+                הדרכה תזונתית ותוצאות מובטחות!
+            </p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">
+                    🎯 התחל עכשיו
+                </a>
+                <a href="#calculators" class="btn btn-secondary">
+                    📊 מחשבונים חינם
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stats-grid">
+                <div class="stat-card fade-in">
+                    <div class="stat-icon">🏆</div>
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">שנות ניסיון</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-number">200+</div>
+                    <div class="stat-label">לקוחות מרוצים</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-icon">📈</div>
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">הגיעו ליעד</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-icon">⭐</div>
+                    <div class="stat-number">4.9</div>
+                    <div class="stat-label">דירוג ממוצע</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="section-header fade-in">
+            <div class="section-badge">🎯 השירותים שלי</div>
+            <h2 class="section-title">תוכניות אימון מותאמות</h2>
+            <p class="section-description">
+                כל תוכנית מותאמת אישית לצרכים, למטרות ולרמת הכושר שלך. 
+                עם מעקב צמוד והדרכה מקצועית לכל הדרך.
+            </p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="service-content">
+                    <h3 class="service-title">אימון אישי פרטי</h3>
+                    <p class="service-description">
+                        אימון אחד על אחד עם מעקב צמוד והתאמה אישית מלאה. 
+                        מושלם למי שרוצה תשומת לב אישית מקסימלית.
+                    </p>
+                    <ul class="service-features">
+                        <li>תוכנית אימון מותאמת אישית</li>
+                        <li>מעקב צמוד והתאמות שוטפות</li>
+                        <li>הדרכה נכונה לכל תרגיל</li>
+                        <li>ייעוץ תזונתי מקצועי</li>
+                        <li>זמינות לשאלות 24/7</li>
+                    </ul>
+                    <div class="service-price">₪350 לאימון</div>
+                </div>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="service-content">
+                    <h3 class="service-title">אימון קבוצתי קטן</h3>
+                    <p class="service-description">
+                        אימון בקבוצות של 2-4 אנשים. שילוב מושלם של תשומת לב אישית 
+                        עם אווירה מעודדת ומחירים נוחים יותר.
+                    </p>
+                    <ul class="service-features">
+                        <li>קבוצות קטנות (2-4 אנשים)</li>
+                        <li>אווירה תומכת ומעודדת</li>
+                        <li>תוכנית מותאמת לקבוצה</li>
+                        <li>מחיר משתלם יותר</li>
+                        <li>גמישות בזמנים</li>
+                    </ul>
+                    <div class="service-price">₪200 לאימון</div>
+                </div>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1584380931214-dbb5b72e7fd0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="service-content">
+                    <h3 class="service-title">תוכנית אימון דיגיטלית</h3>
+                    <p class="service-description">
+                        תוכנית אימון מפורטת שתוכל לבצע בעצמך בבית או בחדר כושר, 
+                        עם וידאו הדגמות והדרכה מרחוק.
+                    </p>
+                    <ul class="service-features">
+                        <li>תוכנית מותאמת אישית</li>
+                        <li>וידאו הדגמות לכל תרגיל</li>
+                        <li>מעקב דיגיטלי</li>
+                        <li>עדכונים שבועיים</li>
+                        <li>תמיכה באפליקציה</li>
+                    </ul>
+                    <div class="service-price">₪150 לחודש</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculators Section -->
+    <section id="calculators" class="calculators">
+        <div class="section-header fade-in">
+            <div class="section-badge">📊 כלים מקצועיים</div>
+            <h2 class="section-title">מחשבונים חינם</h2>
+            <p class="section-description">
+                כלים מקצועיים לחישוב BMI ו-BMR שיעזרו לך להבין את המצב הנוכחי 
+                ולתכנן את המסלול שלך להשגת המטרות.
+            </p>
+        </div>
+
+        <div class="calculators-grid">
+            <!-- BMI Calculator -->
+            <div class="calculator-card fade-in">
+                <h3 class="calculator-title">מחשבון BMI</h3>
+                <p class="calculator-description">
+                    חשב את מדד מסת הגוף שלך (BMI) כדי לדעת אם אתה במשקל תקין, 
+                    חסר או עודף משקל.
+                </p>
+                
+                <div class="form-group">
+                    <label class="form-label">גובה (ס"מ)</label>
+                    <input type="number" class="form-input" id="bmi-height" placeholder="175">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">משקל (ק"ג)</label>
+                    <input type="number" class="form-input" id="bmi-weight" placeholder="70">
+                </div>
+                
+                <button class="calculate-btn" onclick="calculateBMI()">
+                    📊 חשב BMI
+                </button>
+                
+                <div class="result" id="bmi-result">
+                    <div class="result-title">תוצאת BMI שלך:</div>
+                    <div class="result-value" id="bmi-value"></div>
+                    <div class="result-description" id="bmi-category"></div>
+                </div>
+            </div>
+
+            <!-- BMR Calculator -->
+            <div class="calculator-card fade-in">
+                <h3 class="calculator-title">מחשבון BMR</h3>
+                <p class="calculator-description">
+                    חשב את קצב חילוף החומרים הבסיסי שלך (BMR) - כמה קלוריות 
+                    הגוף שלך שורף במנוחה.
+                </p>
+                
+                <div class="form-group">
+                    <label class="form-label">מין</label>
+                    <select class="form-select" id="bmr-gender">
+                        <option value="male">זכר</option>
+                        <option value="female">נקבה</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">גיל</label>
+                    <input type="number" class="form-input" id="bmr-age" placeholder="30">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">גובה (ס"מ)</label>
+                    <input type="number" class="form-input" id="bmr-height" placeholder="175">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">משקל (ק"ג)</label>
+                    <input type="number" class="form-input" id="bmr-weight" placeholder="70">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">רמת פעילות</label>
+                    <select class="form-select" id="bmr-activity">
+                        <option value="1.2">בעיקר יושב (עבודה משרדית)</option>
+                        <option value="1.375">פעילות קלה (אימון 1-3 פעמים בשבוע)</option>
+                        <option value="1.55">פעילות בינונית (אימון 3-5 פעמים בשבוע)</option>
+                        <option value="1.725">פעילות גבוהה (אימון 6-7 פעמים בשבוע)</option>
+                        <option value="1.9">פעילות מאוד גבוהה (אימון כפול ביום)</option>
+                    </select>
+                </div>
+                
+                <button class="calculate-btn" onclick="calculateBMR()">
+                    🔥 חשב BMR
+                </button>
+                
+                <div class="result" id="bmr-result">
+                    <div class="result-title">תוצאת BMR שלך:</div>
+                    <div class="result-value" id="bmr-value"></div>
+                    <div class="result-description" id="bmr-description"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-content">
+            <h2 class="contact-title">מוכן להתחיל?</h2>
+            <p class="contact-description">
+                בואו נתכנן יחד את המסלול שלך להצלחה! אימון ראשון חינם 
+                לכל לקוח חדש.
+            </p>
+            
+            <div class="contact-buttons">
+                <a href="https://wa.me/972501234567?text=שלום%20דניאל!%20אני%20מעוניין%20באימון%20ראשון%20חינם" 
+                   class="btn btn-primary" target="_blank">
+                    📱 WhatsApp
+                </a>
+                <a href="tel:+972501234567" class="btn btn-secondary">
+                    📞 התקשר עכשיו
+                </a>
+            </div>
+            
+            <div class="contact-info">
+                <h3 style="margin-bottom: 1rem;">📧 פרטי יצירת קשר</h3>
+                <p style="margin-bottom: 0.5rem;"><strong>טלפון:</strong> 050-123-4567</p>
+                <p style="margin-bottom: 0.5rem;"><strong>אימייל:</strong> daniel@fitcoach.co.il</p>
+                <p style="margin-bottom: 0.5rem;"><strong>כתובת:</strong> רח' הספורט 15, תל אביב</p>
+                <p style="margin-top: 1rem;">💡 <strong>אימון ראשון חינם!</strong> בואו נכיר ונבנה תוכנית מותאמת</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">דניאל כהן</div>
+            <p class="footer-description">
+                מאמן כושר אישי מוסמך עם תשוקה לעזור לאנשים להגיע למטרות שלהם. 
+                יחד נבנה את הגרסה הכי חזקה ובריאה שלך.
+            </p>
+            <div class="footer-bottom">
+                <p>&copy; 2024 דניאל כהן - מאמן כושר אישי. כל הזכויות שמורות.</p>
+                <p style="margin-top: 0.5rem;">🏋️ "הכוח האמיתי מתחיל מהמחשבה" 💪</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // BMI Calculator
+        function calculateBMI() {
+            const height = parseFloat(document.getElementById('bmi-height').value);
+            const weight = parseFloat(document.getElementById('bmi-weight').value);
+            
+            if (!height || !weight) {
+                alert('אנא מלא את כל השדות');
+                return;
+            }
+            
+            const heightM = height / 100;
+            const bmi = weight / (heightM * heightM);
+            const bmiRounded = Math.round(bmi * 10) / 10;
+            
+            let category = '';
+            let color = '';
+            
+            if (bmi < 18.5) {
+                category = 'תת משקל - מומלץ להעלות משקל';
+                color = '#3b82f6';
+            } else if (bmi < 25) {
+                category = 'משקל תקין - כל הכבוד! 🎉';
+                color = '#059669';
+            } else if (bmi < 30) {
+                category = 'עודף משקל - מומלץ להוריד משקל';
+                color = '#f59e0b';
+            } else {
+                category = 'השמנה - חשוב להתחיל תוכנית הרזיה';
+                color = '#ef4444';
+            }
+            
+            document.getElementById('bmi-value').textContent = bmiRounded;
+            document.getElementById('bmi-value').style.color = color;
+            document.getElementById('bmi-category').textContent = category;
+            document.getElementById('bmi-result').classList.add('show');
+        }
+
+        // BMR Calculator
+        function calculateBMR() {
+            const gender = document.getElementById('bmr-gender').value;
+            const age = parseFloat(document.getElementById('bmr-age').value);
+            const height = parseFloat(document.getElementById('bmr-height').value);
+            const weight = parseFloat(document.getElementById('bmr-weight').value);
+            const activity = parseFloat(document.getElementById('bmr-activity').value);
+            
+            if (!age || !height || !weight) {
+                alert('אנא מלא את כל השדות');
+                return;
+            }
+            
+            let bmr;
+            if (gender === 'male') {
+                bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
+            } else {
+                bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
+            }
+            
+            const tdee = bmr * activity;
+            const bmrRounded = Math.round(bmr);
+            const tdeeRounded = Math.round(tdee);
+            
+            const description = `
+                BMR (חילוף חומרים בסיסי): ${bmrRounded} קלוריות ביום<br>
+                TDEE (צריכה יומית כוללת): ${tdeeRounded} קלוריות ביום<br><br>
+                <strong>המלצות:</strong><br>
+                • להורדה במשקל: ${Math.round(tdee - 500)} קלוריות ביום<br>
+                • לשמירה על משקל: ${tdeeRounded} קלוריות ביום<br>
+                • להעלאה במשקל: ${Math.round(tdee + 300)} קלוריות ביום
+            `;
+            
+            document.getElementById('bmr-value').textContent = `${tdeeRounded} קלוריות`;
+            document.getElementById('bmr-description').innerHTML = description;
+            document.getElementById('bmr-result').classList.add('show');
+        }
+    </script>
+</body>
+</html>
