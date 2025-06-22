@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>סטודיו BELLA - מספרה מקצועית ברמה עולמית</title>
+    <style>
+        :root {
+            --primary: #e91e63;
+            --secondary: #9c27b0;
+            --accent: #ffd700;
+            --dark: #2c2c2c;
+            --light: #f8f9fa;
+            --gradient: linear-gradient(135deg, #e91e63, #9c27b0);
+            --shadow: 0 10px 30px rgba(233, 30, 99, 0.3);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .book-btn {
+            background: var(--gradient);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .book-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(233, 30, 99, 0.4);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 80px;
+        }
+
+        .page {
+            display: none;
+            min-height: 100vh;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(233, 30, 99, 0.1), rgba(156, 39, 176, 0.1)),
+                        url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--dark);
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(233, 30, 99, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            border: 1px solid #f0f0f0;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .service-description {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .service-price {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        /* Gallery */
+        .gallery-filters {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .filter-btn {
+            background: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(233, 30, 99, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay h4 {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        /* Contact Form */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-left: 1rem;
+            color: var(--primary);
+        }
+
+        .contact-details h4 {
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 1rem;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            color: #888;
+        }
+
+        /* Page Hero */
+        .page-hero {
+            height: 60vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+        }
+
+        .page-hero .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+        }
+
+        /* About */
+        .about-story {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-image {
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 15px;
+        }
+
+        /* Services Detailed */
+        .service-detailed {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .service-image {
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 15px;
+        }
+
+        .service-detailed h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .service-detailed ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .service-detailed li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .contact-content,
+            .about-story,
+            .service-detailed {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">BELLA</div>
+            <ul class="nav-links">
+                <li><a class="nav-link" onclick="showPage('home')">בית</a></li>
+                <li><a class="nav-link" onclick="showPage('about')">אודות</a></li>
+                <li><a class="nav-link" onclick="showPage('services')">שירותים</a></li>
+                <li><a class="nav-link" onclick="showPage('gallery')">גלריה</a></li>
+                <li><a class="nav-link" onclick="showPage('contact')">צור קשר</a></li>
+            </ul>
+            <button class="book-btn" onclick="showPage('contact')">📅 הזמנת תור</button>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">סטודיו BELLA</h1>
+                    <p class="hero-subtitle">עיצוב שיער ברמה עולמית • יופי שמתחיל מהשיער</p>
+                    <div class="hero-buttons">
+                        <a class="btn btn-primary" onclick="showPage('contact')">📅 הזמינו תור עכשיו</a>
+                        <a class="btn btn-outline" onclick="showPage('gallery')">🎨 גלריית עבודות</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Preview -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="section-title">השירותים שלנו</h2>
+                    <p class="section-subtitle">מגוון שירותי עיצוב שיער מקצועיים עם הטכנולוגיות החדישות ביותר</p>
+                    
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <span class="service-icon">✂️</span>
+                            <h3 class="service-title">תספורת ועיצוב</h3>
+                            <p class="service-description">תספורות מקצועיות המתאימות לצורת הפנים ואישיותכם הייחודית</p>
+                            <div class="service-price">החל מ-₪150</div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <span class="service-icon">🎨</span>
+                            <h3 class="service-title">צביעה וגוונים</h3>
+                            <p class="service-description">צביעות מתקדמות עם חומרים איכותיים מהמותגים הטובים בעולם</p>
+                            <div class="service-price">החל מ-₪250</div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <span class="service-icon">💇‍♀️</span>
+                            <h3 class="service-title">תסרוקות ערב</h3>
+                            <p class="service-description">תסרוקות מפוארות לאירועים מיוחדים וחתונות</p>
+                            <div class="service-price">החל מ-₪300</div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <span class="service-icon">🌟</span>
+                            <h3 class="service-title">טיפולי שיער</h3>
+                            <p class="service-description">טיפולים מזינים ומשקמים לשיער פגום ויבש</p>
+                            <div class="service-price">החל מ-₪180</div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <span class="service-icon">💆‍♀️</span>
+                            <h3 class="service-title">טיפוח גברים</h3>
+                            <p class="service-description">תספורות וטיפוח מקצועי לגברים בסביבה יוקרתית</p>
+                            <div class="service-price">החל מ-₪120</div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <span class="service-icon">✨</span>
+                            <h3 class="service-title">החלקות שיער</h3>
+                            <p class="service-description">החלקות מתקדמות בטכנולוגיות חדישות לשיער חלק ומבריק</p>
+                            <div class="service-price">החל מ-₪400</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery Preview -->
+            <section class="section" style="background: #f8f9fa;">
+                <div class="container">
+                    <h2 class="section-title">גלריית עבודות</h2>
+                    <p class="section-subtitle">הציצו בעבודות המקצועיות שלנו ובשינויים המדהימים</p>
+                    
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="תספורת נשים">
+                            <div class="gallery-overlay">
+                                <h4>תספורת בוב מודרנית</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="צביעת שיער">
+                            <div class="gallery-overlay">
+                                <h4>צביעה בלונד מושלמת</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <img src="https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="תסרוקת ערב">
+                            <div class="gallery-overlay">
+                                <h4>תסרוקת ערב אלגנטית</h4>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <a class="btn btn-primary" onclick="showPage('gallery')">🎨 צפו בגלריה המלאה</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- About Page -->
+        <div id="about" class="page">
+            <div class="page-hero" style="background: linear-gradient(rgba(233, 30, 99, 0.3), rgba(156, 39, 176, 0.3)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');">
+                <div class="hero-content">
+                    <h1 class="hero-title">הסיפור שלנו</h1>
+                    <p class="hero-subtitle">מחלום קטן לסטודיו מוביל ברמה עולמית</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="container">
+                    <div class="about-story">
+                        <div class="about-text">
+                            <h2>החלום שהפך למציאות</h2>
+                            <p>סטודיו BELLA הוקם בשנת 2008 על ידי בלה כהן, שחלמה ליצור מקום שבו יופי פוגש מקצועיות ברמה הגבוהה ביותר. החל כסטודיו קטן עם חזון גדול, היום אנחנו אחד הסטודיואים המובילים בארץ.</p>
+                            
+                            <p>הפילוסופיה שלנו פשוטה: כל לקוח הוא ייחודי, וכל עבודה שאנחנו עושים צריכה להדגיש את היופי הטבעי שלו. אנחנו משקיעים בהכשרות מתמידות, בטכנולוגיות המתקדמות ביותר ובחומרים איכותיים מהמותגים הטובים בעולם.</p>
+                        </div>
+                        <div class="about-image" style="background-image: url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                    </div>
+                    
+                    <div class="about-story">
+                        <div class="about-image" style="background-image: url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                        <div class="about-text">
+                            <h2>המחויבות שלנו</h2>
+                            <p>אנחנו מאמינים שכל לקוח זכאי לחוויה מושלמת - מהרגע שהוא נכנס לסטודיו ועד שהוא יוצא עם חיוך ושיער מדהים. לכן השקענו ביצירת סביבה יוקרתית ונעימה, עם הציוד המתקדם ביותר.</p>
+                            
+                            <p>הצוות שלנו עובר הכשרות מתמידות במרכזי הכשרה מובילים בעולם, ואנחנו מתעדכנים בכל הטרנדים והטכנולוגיות החדשות. המטרה שלנו היא לא רק לעמוד בציפיות, אלא לחרוג מהן.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services Page -->
+        <div id="services" class="page">
+            <div class="page-hero" style="background: linear-gradient(rgba(233, 30, 99, 0.3), rgba(156, 39, 176, 0.3)), url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');">
+                <div class="hero-content">
+                    <h1 class="hero-title">השירותים שלנו</h1>
+                    <p class="hero-subtitle">מגוון מלא של שירותי עיצוב שיער ברמה עולמית</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="container">
+                    <div class="service-detailed">
+                        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                        <div>
+                            <h2>✂️ תספורת ועיצוב</h2>
+                            <p>תספורות מקצועיות המותאמות אישית לצורת הפנים, סוג השיער ואורח החיים שלכם.</p>
+                            <ul>
+                                <li>💇‍♀️ תספורות נשים מודרניות - ₪150-220</li>
+                                <li>💇‍♂️ תספורות גברים מקצועיות - ₪120-180</li>
+                                <li>👶 תספורות ילדים - ₪80-120</li>
+                                <li>✨ עיצוב ופן - ₪50-80</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="service-detailed">
+                        <div>
+                            <h2>🎨 צביעה וגוונים</h2>
+                            <p>צביעות מתקדמות עם חומרים איכותיים מהמותגים הטובים בעולם.</p>
+                            <ul>
+                                <li>🌟 צביעה מלאה - ₪250-400</li>
+                                <li>✨ הבהרות וגוונים - ₪300-500</li>
+                                <li>🎭 צביעות אומברה ובליאז' - ₪350-550</li>
+                                <li>🌈 צבעים מיוחדים ויצירתיים - ₪400-600</li>
+                            </ul>
+                        </div>
+                        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                    </div>
+                    
+                    <div class="service-detailed">
+                        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                        <div>
+                            <h2>💇‍♀️ תסרוקות ערב</h2>
+                            <p>תסרוקות מפוארות לאירועים מיוחדים, חתונות ואירועי חברה.</p>
+                            <ul>
+                                <li>👰 תסרוקות כלה - ₪400-600</li>
+                                <li>🎉 תסרוקות לאירועים - ₪300-450</li>
+                                <li>💃 תסרוקות ערב מיוחדות - ₪250-400</li>
+                                <li>🌟 ניסיון תסרוקת - ₪150</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Page -->
+        <div id="gallery" class="page">
+            <div class="page-hero" style="background: linear-gradient(rgba(233, 30, 99, 0.3), rgba(156, 39, 176, 0.3)), url('https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');">
+                <div class="hero-content">
+                    <h1 class="hero-title">גלריית עבודות</h1>
+                    <p class="hero-subtitle">הציצו בעבודות המקצועיות שלנו ובשינויים המדהימים</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="container">
+                    <div class="gallery-filters">
+                        <button class="filter-btn active" data-filter="all">הכל</button>
+                        <button class="filter-btn" data-filter="haircuts">תספורות</button>
+                        <button class="filter-btn" data-filter="color">צביעות</button>
+                        <button class="filter-btn" data-filter="evening">תסרוקות ערב</button>
+                        <button class="filter-btn" data-filter="men">גברים</button>
+                        <button class="filter-btn" data-filter="treatments">טיפולים</button>
+                    </div>
+                    
+                    <div class="gallery-grid">
+                        <div class="gallery-item" data-category="haircuts">
+                            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="תספורת נשים מודרנית">
+                            <div class="gallery-overlay">
+                                <h4>תספורת בוב מודרנית</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-item" data-category="color">
+                            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="צביעת שיער בלונד">
+                            <div class="gallery-overlay">
+                                <h4>צביעה בלונד מושלמת</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-item" data-category="evening">
+                            <img src="https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="תסרוקת ערב מפוארת">
+                            <div class="gallery-overlay">
+                                <h4>תסרוקת ערב קלאסית</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-item" data-category="treatments">
+                            <img src="https://images.unsplash.com/photo-1627205094214-5385b3cdce0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="החלקת שיער">
+                            <div class="gallery-overlay">
+                                <h4>החלקת שיער מתקדמת</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-item" data-category="men">
+                            <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="תספורת גברים">
+                            <div class="gallery-overlay">
+                                <h4>תספורת גברים מקצועית</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-item" data-category="treatments">
+                            <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="טיפול קרטין">
+                            <div class="gallery-overlay">
+                                <h4>טיפול קרטין מזין</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-item" data-category="color">
+                            <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="צביעה אומברה">
+                            <div class="gallery-overlay">
+                                <h4>צביעת אומברה עדינה</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-item" data-category="haircuts">
+                            <img src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="תספורת שכבות">
+                            <div class="gallery-overlay">
+                                <h4>תספורת שכבות דינמית</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-item" data-category="evening">
+                            <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="תסרוקת כלה">
+                            <div class="gallery-overlay">
+                                <h4>תסרוקת כלה רומנטית</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-item" data-category="men">
+                            <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="עיצוב זקן">
+                            <div class="gallery-overlay">
+                                <h4>עיצוב זקן מקצועי</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-item" data-category="color">
+                            <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="בליאז' מודרני">
+                            <div class="gallery-overlay">
+                                <h4>בליאז' מודרני ועדין</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-item" data-category="haircuts">
+                            <img src="https://images.unsplash.com/photo-1522338242992-e1a54906a8da?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="תספורת קצרה">
+                            <div class="gallery-overlay">
+                                <h4>תספורת קצרה אלגנטית</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contact" class="page">
+            <div class="page-hero" style="background: linear-gradient(rgba(233, 30, 99, 0.3), rgba(156, 39, 176, 0.3)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');">
+                <div class="hero-content">
+                    <h1 class="hero-title">צור קשר</h1>
+                    <p class="hero-subtitle">נשמח לענות על כל שאלה ולקבוע לכם תור</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="container">
+                    <div class="contact-content">
+                        <div class="contact-form">
+                            <h3 style="font-size: 2rem; margin-bottom: 1.5rem; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 800;">📅 הזמינו תור</h3>
+                            <form id="appointmentForm">
+                                <div class="form-group">
+                                    <label for="name">שם מלא</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="phone">טלפון</label>
+                                    <input type="tel" id="phone" name="phone" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email">אימייל</label>
+                                    <input type="email" id="email" name="email">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="service">סוג השירות</label>
+                                    <select id="service" name="service" required>
+                                        <option value="">בחר שירות</option>
+                                        <option value="haircut">תספורת ועיצוב</option>
+                                        <option value="color">צביעה וגוונים</option>
+                                        <option value="evening">תסרוקת ערב</option>
+                                        <option value="treatment">טיפול שיער</option>
+                                        <option value="men">טיפוח גברים</option>
+                                        <option value="straightening">החלקות שיער</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="date">תאריך מועדף</label>
+                                    <input type="date" id="date" name="date" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="time">שעה מועדפת</label>
+                                    <select id="time" name="time" required>
+                                        <option value="">בחר שעה</option>
+                                        <option value="09:00">09:00</option>
+                                        <option value="10:00">10:00</option>
+                                        <option value="11:00">11:00</option>
+                                        <option value="12:00">12:00</option>
+                                        <option value="13:00">13:00</option>
+                                        <option value="14:00">14:00</option>
+                                        <option value="15:00">15:00</option>
+                                        <option value="16:00">16:00</option>
+                                        <option value="17:00">17:00</option>
+                                        <option value="18:00">18:00</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="notes">הערות נוספות</label>
+                                    <textarea id="notes" name="notes" rows="4" placeholder="ספרו לנו מה אתם מחפשים..."></textarea>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary" style="width: 100%;">📅 שלח בקשה לתור</button>
+                            </form>
+                        </div>
+                        
+                        <div class="contact-info">
+                            <h3>📍 פרטי קשר</h3>
+                            
+                            <div class="contact-item">
+                                <span class="contact-icon">📍</span>
+                                <div class="contact-details">
+                                    <h4>כתובת</h4>
+                                    <p>רחוב דיזנגוף 123, תל אביב<br>קומה 2, יחידה 5</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <span class="contact-icon">📞</span>
+                                <div class="contact-details">
+                                    <h4>טלפון</h4>
+                                    <p>03-123-4567<br>050-123-4567</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <span class="contact-icon">⏰</span>
+                                <div class="contact-details">
+                                    <h4>שעות פתיחה</h4>
+                                    <p>א'-ה': 09:00-19:00<br>ו': 09:00-15:00<br>ש': סגור</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <span class="contact-icon">💬</span>
+                                <div class="contact-details">
+                                    <h4>WhatsApp</h4>
+                                    <p>050-123-4567<br>זמינים להודעות 24/7</p>
+                                </div>
+                            </div>
+                            
+                            <div style="margin-top: 2rem;">
+                                <a href="https://wa.me/972501234567?text=היי! אני רוצה לקבוע תור בסטודיו BELLA" 
+                                   target="_blank" 
+                                   class="btn btn-primary" 
+                                   style="width: 100%; text-align: center; text-decoration: none;">
+                                    💬 שלח הודעה ב-WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>סטודיו BELLA</h3>
+                    <p>מספרה מקצועית ברמה עולמית המתמחה בעיצוב שיער, צביעות מתקדמות ותסרוקות ערב. אנחנו כאן כדי להפוך את החלום שלכם למציאות.</p>
+                    <p style="margin-top: 1rem; color: var(--accent); font-weight: 600;">📍 רחוב דיזנגוף 123, תל אביב</p>
+                    <p style="color: var(--accent); font-weight: 600;">📞 03-123-4567 | 050-123-4567</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>השירותים שלנו</h3>
+                    <ul>
+                        <li><a onclick="showPage('services')">תספורת ועיצוב מקצועי</a></li>
+                        <li><a onclick="showPage('services')">צביעה וגוונים מתקדמים</a></li>
+                        <li><a onclick="showPage('services')">תסרוקות ערב יוקרתיות</a></li>
+                        <li><a onclick="showPage('services')">טיפולי שיער מזינים</a></li>
+                        <li><a onclick="showPage('services')">טיפוח גברים מקצועי</a></li>
+                        <li><a onclick="showPage('services')">החלקות שיער מתקדמות</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>ניווט מהיר</h3>
+                    <ul>
+                        <li><a onclick="showPage('home')">דף הבית</a></li>
+                        <li><a onclick="showPage('about')">הסיפור שלנו</a></li>
+                        <li><a onclick="showPage('gallery')">גלריית עבודות</a></li>
+                        <li><a onclick="showPage('contact')">צור קשר</a></li>
+                        <li><a onclick="showPage('contact')">הזמנת תור מקוון</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>עקבו אחרינו</h3>
+                    <p>הישארו מעודכנים עם הטרנדים החדשים ביותר ועבודות המקצועיות שלנו</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="#" style="display: inline-block; margin: 0 1rem 1rem 0; padding: 0.5rem 1rem; background: var(--gradient); color: white; border-radius: 8px; text-decoration: none; font-weight: 600;">📘 Facebook</a>
+                        <a href="#" style="display: inline-block; margin: 0 1rem 1rem 0; padding: 0.5rem 1rem; background: var(--gradient); color: white; border-radius: 8px; text-decoration: none; font-weight: 600;">📷 Instagram</a>
+                        <a href="https://wa.me/972501234567" target="_blank" style="display: inline-block; margin: 0 1rem 1rem 0; padding: 0.5rem 1rem; background: #25d366; color: white; border-radius: 8px; text-decoration: none; font-weight: 600;">💬 WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 סטודיו BELLA. כל הזכויות שמורות. | עיצוב ופיתוח ברמה עולמית: WebMaster Pro</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Page navigation
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show target page
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Gallery filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter items
+                    galleryItems.forEach(item => {
+                        const category = item.getAttribute('data-category');
+                        
+                        if (filter === 'all' || category === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Contact form
+            const form = document.getElementById('appointmentForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const formData = new FormData(form);
+                    const data = {};
+                    formData.forEach((value, key) => data[key] = value);
+                    
+                    const services = {
+                        'haircut': 'תספורת ועיצוב',
+                        'color': 'צביעה וגוונים',
+                        'evening': 'תסרוקת ערב',
+                        'treatment': 'טיפול שיער',
+                        'men': 'טיפוח גברים',
+                        'straightening': 'החלקות שיער'
+                    };
+                    
+                    const message = `היי! אני רוצה לקבוע תור בסטודיו BELLA:
+
+🌟 פרטי התור:
+👤 שם: ${data.name}
+📞 טלפון: ${data.phone}
+📧 אימייל: ${data.email || 'לא צוין'}
+✂️ שירות: ${services[data.service] || data.service}
+📅 תאריך: ${data.date}
+⏰ שעה: ${data.time}
+📝 הערות: ${data.notes || 'אין הערות'}
+
+אשמח לאישור התור במהרה. תודה רבה! 💕`;
+
+                    const whatsappURL = `https://wa.me/972501234567?text=${encodeURIComponent(message)}`;
+                    window.open(whatsappURL, '_blank');
+                    
+                    alert('הבקשה נשלחה בהצלחה! נחזור אליכם בהקדם.');
+                    form.reset();
+                });
+            }
+
+            // Set minimum date for appointment booking
+            const dateInput = document.getElementById('date');
+            if (dateInput) {
+                const today = new Date();
+                const tomorrow = new Date(today);
+                tomorrow.setDate(today.getDate() + 1);
+                dateInput.min = tomorrow.toISOString().split('T')[0];
+            }
+        });
+
+        console.log('🌟 סטודיו BELLA - אתר מלא ופונקציונלי טעון בהצלחה!');
+    </script>
+</body>
+</html>
