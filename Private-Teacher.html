@@ -3,9 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ד"ר רונית לוי - מורה פרטית לבגרויות | מתמטיקה, פיזיקה, אנגלית</title>
-    <meta name="description" content="ד"ר רונית לוי - מורה פרטית מומחית לבגרויות במתמטיקה, פיזיקה ואנגלית. שיטות הוראה מתקדמות, ביטחון עצמי ותוצאות מוכחות.">
+    <title>RealEstate Pro | נדל״ן יוקרתי ברמה עולמית</title>
+    <meta name="description" content="RealEstate Pro - פלטפורמת נדל״ן יוקרתית מובילה. נכסי יוקרה בלעדיים, וילות פרטיות ופנטהאוזים.">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
+        :root {
+            --luxury-black: #0a0a0a;
+            --luxury-gold: #d4af37;
+            --luxury-platinum: #e5e4e2;
+            --luxury-champagne: #f5f5dc;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --pure-white: #ffffff;
+            --shadow-luxury: 0 20px 60px rgba(0, 0, 0, 0.15);
+            --shadow-ultra: 0 40px 100px rgba(0, 0, 0, 0.25);
+            --gradient-luxury: linear-gradient(135deg, #d4af37 0%, #ffd700 50%, #b8860b 100%);
+            --gradient-obsidian: linear-gradient(135deg, #0a0a0a 0%, #2d2d2d 50%, #1a1a1a 100%);
+            --border-radius-sm: 8px;
+            --border-radius-md: 16px;
+            --border-radius-xl: 32px;
+            --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --font-luxury: 'Playfair Display', serif;
+            --font-modern: 'Inter', sans-serif;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,979 +36,1308 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: var(--font-modern);
             line-height: 1.6;
-            color: #333;
-            background-color: #ffffff;
+            color: var(--text-primary);
+            background: var(--pure-white);
+            overflow-x: hidden;
         }
 
-        /* Header & Navigation */
-        header {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #06b6d4 100%);
-            color: white;
-            padding: 1rem 0;
+        /* Loading Screen */
+        .loading-screen {
             position: fixed;
-            width: 100%;
             top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-obsidian);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 1.5s ease;
         }
 
-        nav {
-            max-width: 1200px;
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loading-logo {
+            font-family: var(--font-luxury);
+            font-size: 64px;
+            font-weight: 300;
+            background: var(--gradient-luxury);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 40px;
+            animation: pulse 3s infinite;
+        }
+
+        .loading-spinner {
+            width: 80px;
+            height: 80px;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            border-top: 2px solid var(--luxury-gold);
+            border-radius: 50%;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            z-index: 1000;
+            padding: 20px 0;
+            transition: var(--transition-smooth);
+        }
+
+        .navbar.scrolled {
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .navbar.scrolled .logo,
+        .navbar.scrolled .nav-menu a {
+            color: var(--pure-white);
+        }
+
+        .nav-container {
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 2rem;
+            padding: 0 40px;
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, #fbbf24, #f59e0b);
+            font-family: var(--font-luxury);
+            font-size: 32px;
+            font-weight: 300;
+            background: var(--gradient-luxury);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
-        .nav-links {
+        .nav-menu {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 40px;
         }
 
-        .nav-links a {
-            color: white;
+        .nav-menu a {
             text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
+            color: var(--text-primary);
+            font-weight: 400;
+            font-size: 15px;
+            padding: 12px 20px;
+            border-radius: var(--border-radius-sm);
+            transition: var(--transition-smooth);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .nav-links a:hover, .nav-links a.active {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-2px);
-        }
-
-        /* Main Sections */
-        .section {
-            min-height: 100vh;
-            padding: 6rem 2rem 4rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section.active {
-            display: block;
-        }
-
-        .section:not(.active) {
-            display: none;
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--luxury-gold);
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #06b6d4 100%);
-            color: white;
+            min-height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&h=1200&q=90') center/cover;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 4rem;
-            padding: 8rem 2rem 4rem;
-            margin-top: -6rem;
+            position: relative;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
         }
 
         .hero-content {
-            flex: 1;
-            max-width: 600px;
+            max-width: 800px;
         }
 
-        .hero-content h1 {
-            font-size: 3rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, #ffffff, #fbbf24);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .hero-content .subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            opacity: 0.95;
-            font-weight: 300;
-        }
-
-        .hero-content .description {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            line-height: 1.7;
-        }
-
-        .hero-image {
-            flex: 0 0 400px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .profile-image {
-            width: 350px;
-            height: 350px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 8px solid rgba(255,255,255,0.3);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease;
-        }
-
-        .profile-image:hover {
-            transform: scale(1.05);
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, #f59e0b, #fbbf24);
-            color: white;
-            padding: 1rem 2.5rem;
-            text-decoration: none;
+        .hero-badge {
+            display: inline-flex;
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--luxury-gold);
+            padding: 12px 24px;
             border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 30px;
+            text-transform: uppercase;
         }
 
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(245, 158, 11, 0.4);
+        .hero-title {
+            font-family: var(--font-luxury);
+            font-size: 72px;
+            font-weight: 300;
+            color: var(--pure-white);
+            margin-bottom: 30px;
+            line-height: 1.1;
         }
 
-        /* Stats Section */
-        .stats {
+        .hero-subtitle {
+            font-size: 28px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            line-height: 1.4;
+        }
+
+        .hero-stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin: 4rem 0;
-            padding: 3rem 0;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            border-radius: 20px;
+            gap: 30px;
+            margin-bottom: 50px;
         }
 
-        .stat-item {
+        .hero-stat {
             text-align: center;
-            padding: 2rem;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: var(--border-radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .stat-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, #2563eb, #06b6d4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .hero-stat-number {
+            font-family: var(--font-luxury);
+            font-size: 42px;
+            font-weight: 300;
+            color: var(--luxury-gold);
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 8px;
         }
 
-        .stat-label {
-            color: #64748b;
-            font-weight: 500;
+        .hero-stat-label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* Services Section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .service-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            border: 3px solid transparent;
-            background-clip: padding-box;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-            border-color: #3b82f6;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #1e3a8a;
-        }
-
-        .service-card .price {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #059669;
-            margin-bottom: 1rem;
-        }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 400px;
-            gap: 4rem;
-            align-items: center;
-            margin: 3rem 0;
-        }
-
-        .about-text h2 {
-            font-size: 2.5rem;
-            color: #1e3a8a;
-            margin-bottom: 2rem;
-            background: linear-gradient(45deg, #1e3a8a, #3b82f6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .about-image {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-
-        /* Articles Section */
-        .filter-buttons {
+        .hero-cta {
             display: flex;
+            gap: 20px;
             flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            justify-content: center;
         }
 
-        .filter-btn {
-            padding: 0.8rem 1.5rem;
-            background: white;
-            border: 2px solid #e2e8f0;
-            color: #64748b;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        /* Buttons */
+        .btn {
+            padding: 18px 36px;
+            border: none;
+            border-radius: var(--border-radius-sm);
+            font-size: 15px;
             font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .filter-btn.active, .filter-btn:hover {
-            background: linear-gradient(45deg, #2563eb, #3b82f6);
-            color: white;
-            border-color: #2563eb;
+        .btn-primary {
+            background: var(--gradient-luxury);
+            color: var(--luxury-black);
+            box-shadow: var(--shadow-luxury);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--pure-white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        /* Sections */
+        .section {
+            padding: 120px 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-badge {
+            display: inline-flex;
+            background: var(--luxury-champagne);
+            color: var(--text-primary);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-family: var(--font-luxury);
+            font-size: 56px;
+            font-weight: 300;
+            color: var(--text-primary);
+            margin-bottom: 25px;
+            line-height: 1.1;
+        }
+
+        .section-description {
+            font-size: 20px;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Properties */
+        .featured-properties {
+            background: linear-gradient(to bottom, var(--pure-white), var(--luxury-champagne));
+        }
+
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 40px;
+        }
+
+        .property-card {
+            background: var(--pure-white);
+            border-radius: var(--border-radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-luxury);
+            transition: var(--transition-smooth);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .property-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-ultra);
+        }
+
+        .property-image {
+            height: 320px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .property-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+
+        .property-card:hover .property-image img {
+            transform: scale(1.08);
+        }
+
+        .property-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--gradient-luxury);
+            color: var(--luxury-black);
+            padding: 8px 16px;
+            border-radius: var(--border-radius-sm);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .property-content {
+            padding: 40px;
+        }
+
+        .property-price {
+            font-family: var(--font-luxury);
+            font-size: 36px;
+            font-weight: 400;
+            color: var(--luxury-gold);
+            margin-bottom: 15px;
+        }
+
+        .property-title {
+            font-family: var(--font-luxury);
+            font-size: 24px;
+            font-weight: 400;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .property-location {
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .property-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+            padding: 25px;
+            background: var(--luxury-champagne);
+            border-radius: var(--border-radius-md);
+        }
+
+        .property-feature {
+            text-align: center;
+        }
+
+        .property-feature-number {
+            font-family: var(--font-luxury);
+            font-size: 24px;
+            font-weight: 400;
+            color: var(--luxury-gold);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .property-feature-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+
+        .property-description {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: var(--border-radius-sm);
+            border-right: 4px solid var(--luxury-gold);
+        }
+
+        .property-description p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .property-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .property-btn {
+            flex: 1;
+            background: var(--gradient-obsidian);
+            color: var(--pure-white);
+            padding: 15px 24px;
+            border: none;
+            border-radius: var(--border-radius-sm);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 13px;
+        }
+
+        .property-btn:hover {
+            background: var(--gradient-luxury);
+            color: var(--luxury-black);
             transform: translateY(-2px);
         }
 
-        .articles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .article-card {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
-
-        .article-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .article-content {
-            padding: 2rem;
-        }
-
-        .article-category {
-            background: linear-gradient(45deg, #f59e0b, #fbbf24);
-            color: white;
-            padding: 0.3rem 1rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 1rem;
-        }
-
         /* Contact Section */
+        .contact {
+            background: var(--gradient-obsidian);
+            color: var(--pure-white);
+        }
+
+        .contact .section-title,
+        .contact .section-description {
+            color: var(--pure-white);
+        }
+
+        .contact .section-badge {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--luxury-gold);
+        }
+
         .contact-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin: 3rem 0;
-        }
-
-        .contact-form {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #374151;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid #e5e7eb;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #3b82f6;
-        }
-
-        .contact-info {
-            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-            color: white;
-            padding: 2.5rem;
-            border-radius: 20px;
+            gap: 80px;
         }
 
         .contact-info h3 {
-            margin-bottom: 2rem;
-            font-size: 1.8rem;
+            font-family: var(--font-luxury);
+            font-size: 32px;
+            font-weight: 400;
+            margin-bottom: 40px;
+            color: var(--luxury-gold);
+        }
+
+        .contact-items {
+            display: grid;
+            gap: 30px;
         }
 
         .contact-item {
             display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius-md);
+            transition: var(--transition-smooth);
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-luxury);
+            border-radius: var(--border-radius-sm);
+            display: flex;
             align-items: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
+            justify-content: center;
+            color: var(--luxury-black);
+            font-size: 20px;
+            flex-shrink: 0;
         }
 
-        .contact-item span {
-            margin-left: 1rem;
-            font-size: 1.3rem;
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            padding: 60px;
+            border-radius: var(--border-radius-xl);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        /* Section Headers */
-        .section-header {
+        .form-title {
+            font-family: var(--font-luxury);
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 40px;
             text-align: center;
-            margin-bottom: 4rem;
+            color: var(--luxury-gold);
         }
 
-        .section-header h2 {
-            font-size: 3rem;
-            color: #1e3a8a;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, #1e3a8a, #3b82f6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 25px;
         }
 
-        .section-header p {
-            font-size: 1.2rem;
-            color: #64748b;
-            max-width: 600px;
-            margin: 0 auto;
+        .form-group {
+            display: grid;
+            gap: 10px;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                gap: 2rem;
-            }
+        .form-label {
+            font-weight: 500;
+            color: var(--pure-white);
+            font-size: 15px;
+        }
 
-            .hero-content h1 {
-                font-size: 2.2rem;
-            }
+        .form-input,
+        .form-select,
+        .form-textarea {
+            padding: 18px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--border-radius-sm);
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--pure-white);
+            transition: var(--transition-smooth);
+        }
 
-            .profile-image {
-                width: 250px;
-                height: 250px;
-            }
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
 
-            .nav-links {
-                flex-direction: column;
-                gap: 1rem;
-            }
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--luxury-gold);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
 
-            .about-content {
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            width: 100%;
+            background: var(--gradient-luxury);
+            color: var(--luxury-black);
+            padding: 20px;
+            border: none;
+            border-radius: var(--border-radius-sm);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-luxury);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--luxury-black);
+            color: var(--pure-white);
+            padding: 80px 0 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-section h4 {
+            font-family: var(--font-luxury);
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 30px;
+            color: var(--luxury-gold);
+        }
+
+        .footer-section p,
+        .footer-section li {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-section a:hover {
+            color: var(--luxury-gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero-title {
+                font-size: 56px;
+            }
+            .section-title {
+                font-size: 42px;
+            }
+            .properties-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
             }
-
             .contact-content {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 60px;
             }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Mobile Navigation */
-        .mobile-menu {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .mobile-menu span {
-            width: 25px;
-            height: 3px;
-            background: white;
-            margin: 3px 0;
-            transition: 0.3s;
         }
 
         @media (max-width: 768px) {
-            .mobile-menu {
-                display: flex;
+            .container {
+                padding: 0 20px;
             }
-
-            .nav-links {
+            .hero-title {
+                font-size: 42px;
+            }
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .nav-menu {
                 display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-                flex-direction: column;
-                padding: 2rem;
             }
+            .section {
+                padding: 80px 0;
+            }
+            .contact-form {
+                padding: 40px 30px;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
 
-            .nav-links.active {
-                display: flex;
-            }
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <!-- Header & Navigation -->
-    <header>
-        <nav>
-            <div class="logo">ד"ר רונית לוי</div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#" class="nav-link active" data-section="home">בית</a></li>
-                <li><a href="#" class="nav-link" data-section="about">אודות</a></li>
-                <li><a href="#" class="nav-link" data-section="services">מקצועות</a></li>
-                <li><a href="#" class="nav-link" data-section="articles">מאמרים</a></li>
-                <li><a href="#" class="nav-link" data-section="contact">צור קשר</a></li>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-logo">RealEstate Pro</div>
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">RealEstate Pro</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="active">בית</a></li>
+                <li><a href="#properties">נכסים</a></li>
+                <li><a href="#contact">צור קשר</a></li>
             </ul>
-            <div class="mobile-menu" onclick="toggleMobileMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="section hero active">
-        <div class="hero-content">
-            <h1>ד"ר רונית לוי</h1>
-            <p class="subtitle">מורה פרטית מומחית לבגרויות</p>
-            <p class="description">מתמטיקה • פיזיקה • אנגלית<br>
-            שיטות הוראה מתקדמות המשלבות NLP וטכניקות מוכחות לביטחון עצמי והצלחה בבגרויות</p>
-            <a href="#" class="cta-button" onclick="showSection('contact')">📞 צור קשר עכשיו</a>
-        </div>
-        <div class="hero-image">
-            <img src="https://i.postimg.cc/L53TGv70/Take-a-look-at-my-Canva-design.jpg" 
-                 alt="ד״ר רונית לוי - מורה פרטית מקצועית" 
-                 class="profile-image"
-                 style="width: 350px; height: 350px; border-radius: 50%; object-fit: cover; border: 8px solid rgba(255,255,255,0.3); box-shadow: 0 20px 40px rgba(0,0,0,0.3); transition: transform 0.3s ease;"
-                 loading="eager">
-        </div>
-
-        <!-- Stats Section -->
-        <div class="stats">
-            <div class="stat-item">
-                <span class="stat-number">300+</span>
-                <span class="stat-label">תלמידים מצליחים</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">95%</span>
-                <span class="stat-label">הצלחה בבגרויות</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">12</span>
-                <span class="stat-label">שנות ניסיון</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="section-header">
-            <h2>אודות ד"ר רונית לוי</h2>
-            <p>מומחית בהוראה פרטית עם שיטות מתקדמות לביטחון עצמי והצלחה</p>
-        </div>
-
-        <div class="about-content">
-            <div class="about-text">
-                <h2>המורה שלכם להצלחה</h2>
-                <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
-                    שלום, אני ד"ר רונית לוי, מורה פרטית עם 12 שנות ניסיון בהכנה לבגרויות. 
-                    האמונה שלי היא שכל תלמיד יכול להצליח כשהוא מקבל את הכלים הנכונים והתמיכה המתאימה.
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    נדל״ן יוקרתי בלעדי
+                </div>
+                <h1 class="hero-title">הנכסים היוקרתיים ביותר בעולם</h1>
+                <p class="hero-subtitle">
+                    גלו את האוסף הבלעדי שלנו של נכסי יוקרה יוצאי דופן. וילות פרטיות, 
+                    פנטהאוזים ונכסים היסטוריים ברמה עולמית.
                 </p>
-
-                <div style="background: linear-gradient(135deg, #f8fafc, #e2e8f0); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
-                    <h3 style="color: #1e3a8a; margin-bottom: 1rem;">📚 השכלה מקצועית</h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 0.8rem;">🎓 דוקטורט במתמטיקה - אוניברסיטת תל אביב</li>
-                        <li style="margin-bottom: 0.8rem;">🧠 הסמכה ב-NLP ופסיכולוגיה חינוכית</li>
-                        <li style="margin-bottom: 0.8rem;">📈 מומחיות בטכניקות זיכרון ולמידה מהירה</li>
-                    </ul>
+                
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">₪500M+</span>
+                        <span class="hero-stat-label">שווי נכסים</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">250+</span>
+                        <span class="hero-stat-label">נכסי יוקרה</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">15+</span>
+                        <span class="hero-stat-label">שנות ניסיון</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">98%</span>
+                        <span class="hero-stat-label">שביעות רצון</span>
+                    </div>
                 </div>
-
-                <div style="background: linear-gradient(135deg, #eff6ff, #dbeafe); padding: 2rem; border-radius: 15px;">
-                    <h3 style="color: #1e3a8a; margin-bottom: 1rem;">🎯 המתודולוגיה הייחודית שלי</h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 0.8rem;">💪 בניית ביטחון עצמי לפני כל דבר</li>
-                        <li style="margin-bottom: 0.8rem;">🧩 פתרון בעיות צעד אחר צעד</li>
-                        <li style="margin-bottom: 0.8rem;">🎨 הפיכת המתמטיקה למעניינת ומובנת</li>
-                        <li style="margin-bottom: 0.8rem;">🏆 תכנית אישית לכל תלמיד</li>
-                    </ul>
-                </div>
-            </div>
-            <div>
-                <img src="https://i.postimg.cc/RhWtLdmH/profile-teacher-1.jpg" 
-                     alt="ד״ר רונית לוי בעבודה" 
-                     style="width: 100%; height: 500px; object-fit: cover; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);"
-                     loading="eager">
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="section">
-        <div class="section-header">
-            <h2>המקצועות שלי</h2>
-            <p>הכנה מקצועית ומותאמת אישית לבגרויות בשלושה מקצועות מרכזיים</p>
-        </div>
-
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>🔢 מתמטיקה</h3>
-                <div class="price">₪200 לשיעור</div>
-                <p style="margin-bottom: 1.5rem;">3-5 יחידות בגרות • אלגברה • גיאומטריה • חשבון דיפרנציאלי ואינטגרלי</p>
-                <ul style="list-style: none; padding: 0;">
-                    <li style="margin-bottom: 0.5rem;">✅ שיטות פתרון יעילות</li>
-                    <li style="margin-bottom: 0.5rem;">✅ תרגילים מותאמים אישית</li>
-                    <li style="margin-bottom: 0.5rem;">✅ הכנה לבחינות פרקטיות</li>
-                    <li style="margin-bottom: 0.5rem;">✅ סימולציות בגרות</li>
-                </ul>
-                <a href="#" class="cta-button" style="margin-top: 1rem; display: inline-block;" onclick="showSection('contact')">📞 פרטים נוספים</a>
-            </div>
-
-            <div class="service-card">
-                <h3>⚗️ פיזיקה</h3>
-                <div class="price">₪220 לשיעור</div>
-                <p style="margin-bottom: 1.5rem;">3-5 יחידות בגרות • מכניקה • חשמל • אלקטרומגנטיות • תרמודינמיקה</p>
-                <ul style="list-style: none; padding: 0;">
-                    <li style="margin-bottom: 0.5rem;">✅ הבנה עמוקה של התופעות</li>
-                    <li style="margin-bottom: 0.5rem;">✅ פתרון בעיות מורכבות</li>
-                    <li style="margin-bottom: 0.5rem;">✅ ניסויים וירטואליים</li>
-                    <li style="margin-bottom: 0.5rem;">✅ הכנה לבחינה המעשית</li>
-                </ul>
-                <a href="#" class="cta-button" style="margin-top: 1rem; display: inline-block;" onclick="showSection('contact')">📞 פרטים נוספים</a>
-            </div>
-
-            <div class="service-card">
-                <h3>🌍 אנגלית</h3>
-                <div class="price">₪180 לשיעור</div>
-                <p style="margin-bottom: 1.5rem;">3-5 יחידות בגרות • דקדוק • אוצר מילים • הבנת הנקרא • כתיבה</p>
-                <ul style="list-style: none; padding: 0;">
-                    <li style="margin-bottom: 0.5rem;">✅ שיפור דקדוק ואוצר מילים</li>
-                    <li style="margin-bottom: 0.5rem;">✅ אסטרטגיות הבנת הנקרא</li>
-                    <li style="margin-bottom: 0.5rem;">✅ כתיבת חיבורים</li>
-                    <li style="margin-bottom: 0.5rem;">✅ הכנה למבחן בעל פה</li>
-                </ul>
-                <a href="#" class="cta-button" style="margin-top: 1rem; display: inline-block;" onclick="showSection('contact')">📞 פרטים נוספים</a>
-            </div>
-        </div>
-
-        <!-- Testimonials -->
-        <div style="margin-top: 4rem; background: linear-gradient(135deg, #f8fafc, #e2e8f0); padding: 3rem; border-radius: 20px;">
-            <h3 style="text-align: center; color: #1e3a8a; margin-bottom: 2rem; font-size: 2rem;">מה אומרים התלמידים</h3>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.1);">
-                    <p style="font-style: italic; margin-bottom: 1rem; color: #64748b;">"רונית שינתה לי את החיים! הייתי בפאניקה מבגרות במתמטיקה ובזכותה קיבלתי 95. היא לא רק לימדה אותי מתמטיקה, היא נתנה לי ביטחון עצמי."</p>
-                    <div style="font-weight: bold; color: #1e3a8a;">⭐⭐⭐⭐⭐ - נועה כהן, בוגרת 2023</div>
-                </div>
-                <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.1);">
-                    <p style="font-style: italic; margin-bottom: 1rem; color: #64748b;">"הפיזיקה הייתה הסיוט שלי עד שפגשתי את רונית. השיטה שלה להסביר תופעות מורכבות פשוט גאונית. קיבלתי 92 בבגרות!"</p>
-                    <div style="font-weight: bold; color: #1e3a8a;">⭐⭐⭐⭐⭐ - יונתן לוי, בוגר 2023</div>
-                </div>
-                <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.1);">
-                    <p style="font-style: italic; margin-bottom: 1rem; color: #64748b;">"בזכות רונית האנגלית שלי משתפרת כל השיעור. היא יודעת בדיוק איך לגרום לי להבין ולזכור. מורה מעולה!"</p>
-                    <div style="font-weight: bold; color: #1e3a8a;">⭐⭐⭐⭐⭐ - מיכל ברק, תלמידה נוכחית</div>
+                
+                <div class="hero-cta">
+                    <a href="#properties" class="btn btn-primary">
+                        צפה בנכסים
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        ייעוץ VIP
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Articles Section -->
-    <section id="articles" class="section">
-        <div class="section-header">
-            <h2>מאמרים וטיפים</h2>
-            <p>מדריכים מקצועיים, טיפים לבגרויות וטכניקות לימוד מתקדמות</p>
-        </div>
-
-        <div class="filter-buttons">
-            <button class="filter-btn active" data-filter="all">הכל</button>
-            <button class="filter-btn" data-filter="math">מתמטיקה</button>
-            <button class="filter-btn" data-filter="physics">פיזיקה</button>
-            <button class="filter-btn" data-filter="english">אנגלית</button>
-            <button class="filter-btn" data-filter="tips">טיפי לימוד</button>
-            <button class="filter-btn" data-filter="exams">הכנה לבגרויות</button>
-        </div>
-
-        <div class="articles-grid" id="articlesGrid">
-            <div class="article-card" data-category="math">
-                <div class="article-content">
-                    <div class="article-category">מתמטיקה</div>
-                    <h3 style="color: #1e3a8a; margin-bottom: 1rem;">5 טריקים לפתרון משוואות ריבועיות</h3>
-                    <p style="color: #64748b; line-height: 1.6;">גלו את הטריקים המתקדמים שיעזרו לכם לפתור משוואות ריבועיות במהירות ובדיוק. כולל דוגמאות מעשיות ושיטות זכירה.</p>
-                    <div style="margin-top: 1.5rem; color: #9ca3af; font-size: 0.9rem;">📅 פורסם: 15 ינואר 2024</div>
-                </div>
+    <!-- Featured Properties -->
+    <section id="properties" class="section featured-properties fade-in">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">נכסים נבחרים</div>
+                <h2 class="section-title">נכסי יוקרה בלעדיים</h2>
+                <p class="section-description">
+                    אוסף מיוחד של הנכסים היוקרתיים והנדירים ביותר. כל נכס נבחר בקפידה 
+                    ומציע חוויית מגורים יוצאת דופן ברמה עולמית.
+                </p>
             </div>
-
-            <div class="article-card" data-category="physics">
-                <div class="article-content">
-                    <div class="article-category">פיזיקה</div>
-                    <h3 style="color: #1e3a8a; margin-bottom: 1rem;">חוקי ניוטון במציאות - איך להבין ולזכור</h3>
-                    <p style="color: #64748b; line-height: 1.6;">המדריך המלא להבנת חוקי ניוטון עם דוגמאות מהחיים. איך להפוך מושגים מופשטים למובנים וקלים לזכירה.</p>
-                    <div style="margin-top: 1.5rem; color: #9ca3af; font-size: 0.9rem;">📅 פורסם: 12 ינואר 2024</div>
+            
+            <div class="properties-grid">
+                <!-- Property 1 -->
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=90" alt="וילה יוקרתית">
+                        <div class="property-badge">בלעדי</div>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-price">₪18,500,000</div>
+                        <h3 class="property-title">פנטהאוז יוקרתי במגדל היוקרה</h3>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            תל אביב, צפון התיירות
+                        </div>
+                        
+                        <div class="property-features">
+                            <div class="property-feature">
+                                <span class="property-feature-number">6</span>
+                                <span class="property-feature-label">חדרים</span>
+                            </div>
+                            <div class="property-feature">
+                                <span class="property-feature-number">4</span>
+                                <span class="property-feature-label">שירותים</span>
+                            </div>
+                            <div class="property-feature">
+                                <span class="property-feature-number">450</span>
+                                <span class="property-feature-label">מ״ר</span>
+                            </div>
+                        </div>
+                        
+                        <div class="property-description">
+                            <p>פנטהאוז יוקרתי במגדל הפרימיום החדש של תל אביב. נוף עוצר נשימה לים ולעיר, מרפסת ענקית 150 מ"ר, מעלית פרטית ועיצוב אדריכלי חדשני ברמה בינלאומית.</p>
+                        </div>
+                        
+                        <div class="property-actions">
+                            <a href="#" class="property-btn" onclick="contactWhatsApp('פנטהאוז תל אביב - 18.5M')">פרטים</a>
+                            <a href="#" class="property-btn" onclick="contactWhatsApp('סיור וירטואלי - פנטהאוז תל אביב')">סיור וירטואלי</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="article-card" data-category="english">
-                <div class="article-content">
-                    <div class="article-category">אנגלית</div>
-                    <h3 style="color: #1e3a8a; margin-bottom: 1rem;">אסטרטגיות לשיפור הבנת הנקרא</h3>
-                    <p style="color: #64748b; line-height: 1.6;">טכניקות מוכחות לשיפור ההבנה באנגלית. איך לזהות רעיונות מרכזיים, להבין מהקשר ולענות נכון על שאלות.</p>
-                    <div style="margin-top: 1.5rem; color: #9ca3af; font-size: 0.9rem;">📅 פורסם: 8 ינואר 2024</div>
+                <!-- Property 3 -->
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=90" alt="אחוזה היסטורית">
+                        <div class="property-badge">היסטורי</div>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-price">₪35,000,000</div>
+                        <h3 class="property-title">אחוזה היסטורית מהמאה ה-19</h3>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            זכרון יעקב, הכרמל
+                        </div>
+                        
+                        <div class="property-features">
+                            <div class="property-feature">
+                                <span class="property-feature-number">12</span>
+                                <span class="property-feature-label">חדרים</span>
+                            </div>
+                            <div class="property-feature">
+                                <span class="property-feature-number">8</span>
+                                <span class="property-feature-label">שירותים</span>
+                            </div>
+                            <div class="property-feature">
+                                <span class="property-feature-number">2,500</span>
+                                <span class="property-feature-label">מ״ר</span>
+                            </div>
+                        </div>
+                        
+                        <div class="property-description">
+                            <p>אחוזה היסטורית מהמאה ה-19 שעברה שיפוץ יוקרתי מלא. שוכנת על 5 דונם של גינות מעוצבות עם אגם פרטי, ביתן אירוח, מרתפי יין ופרטיות מוחלטת בלב הכרמל.</p>
+                        </div>
+                        
+                        <div class="property-actions">
+                            <a href="#" class="property-btn" onclick="contactWhatsApp('אחוזה היסטורית זכרון יעקב - 35M')">פרטים</a>
+                            <a href="#" class="property-btn" onclick="contactWhatsApp('סיור וירטואלי - אחוזה זכרון יעקב')">סיור וירטואלי</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="article-card" data-category="tips">
-                <div class="article-content">
-                    <div class="article-category">טיפי לימוד</div>
-                    <h3 style="color: #1e3a8a; margin-bottom: 1rem;">טכניקות זיכרון לבגרויות - NLP במבחנים</h3>
-                    <p style="color: #64748b; line-height: 1.6;">איך להשתמש בטכניקות NLP לשיפור הזיכרון והביצועים במבחנים. כלים פרקטיים שישנו את דרך הלימוד שלכם.</p>
-                    <div style="margin-top: 1.5rem; color: #9ca3af; font-size: 0.9rem;">📅 פורסם: 5 ינואר 2024</div>
-                </div>
-            </div>
-
-            <div class="article-card" data-category="exams">
-                <div class="article-content">
-                    <div class="article-category">הכנה לבגרויות</div>
-                    <h3 style="color: #1e3a8a; margin-bottom: 1rem;">לוח זמנים אידיאלי להכנה לבגרויות</h3>
-                    <p style="color: #64748b; line-height: 1.6;">איך לתכנן את ההכנה לבגרויות בצורה חכמה ויעילה. תכנית פעולה צעד אחר צעד לחצי שנה לפני המבחנים.</p>
-                    <div style="margin-top: 1.5rem; color: #9ca3af; font-size: 0.9rem;">📅 פורסם: 2 ינואר 2024</div>
-                </div>
-            </div>
-
-            <div class="article-card" data-category="tips">
-                <div class="article-content">
-                    <div class="article-category">טיפי לימוד</div>
-                    <h3 style="color: #1e3a8a; margin-bottom: 1rem;">איך להתמודד עם חרדת מבחנים</h3>
-                    <p style="color: #64748b; line-height: 1.6;">כלים מעשיים להפחתת לחץ ובניית ביטחון עצמי לפני ובמהלך מבחנים. טכניקות נשימה, חשיבה חיובית ועוד.</p>
-                    <div style="margin-top: 1.5rem; color: #9ca3af; font-size: 0.9rem;">📅 פורסם: 28 דצמבר 2023</div>
+                <!-- Property 4 -->
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=90" alt="דירת יוקרה">
+                        <div class="property-badge">מודרני</div>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-price">₪12,800,000</div>
+                        <h3 class="property-title">דירת יוקרה מודרנית עם גינה</h3>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            הרצליה פיתוח, מרינה
+                        </div>
+                        
+                        <div class="property-features">
+                            <div class="property-feature">
+                                <span class="property-feature-number">5</span>
+                                <span class="property-feature-label">חדרים</span>
+                            </div>
+                            <div class="property-feature">
+                                <span class="property-feature-number">3</span>
+                                <span class="property-feature-label">שירותים</span>
+                            </div>
+                            <div class="property-feature">
+                                <span class="property-feature-number">320</span>
+                                <span class="property-feature-label">מ״ר</span>
+                            </div>
+                        </div>
+                        
+                        <div class="property-description">
+                            <p>דירת גן יוקרתית במתחם המרינה הבלעדי. גינה פרטית 200 מ"ר, חניה מקורה לשתי מכוניות, קרבה למסעדות גורמה ומרכזי קניות יוקרתיים. עיצוב מודרני ואיכויות פרימיום.</p>
+                        </div>
+                        
+                        <div class="property-actions">
+                            <a href="#" class="property-btn" onclick="contactWhatsApp('דירת יוקרה הרצליה - 12.8M')">פרטים</a>
+                            <a href="#" class="property-btn" onclick="contactWhatsApp('סיור וירטואלי - דירה הרצליה')">סיור וירטואלי</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="section-header">
-            <h2>צור קשר</h2>
-            <p>מוכנה לעזור לכם להצליח! יצירת קשר לייעוץ חינם ותיאום שיעורים</p>
-        </div>
-
-        <div class="contact-content">
-            <div class="contact-form">
-                <h3 style="color: #1e3a8a; margin-bottom: 2rem; font-size: 1.8rem;">📝 ייעוץ חינם</h3>
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">שם מלא *</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phone">טלפון *</label>
-                        <input type="tel" id="phone" name="phone" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">אימייל</label>
-                        <input type="email" id="email" name="email">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="grade">כיתה *</label>
-                        <select id="grade" name="grade" required>
-                            <option value="">בחר כיתה</option>
-                            <option value="ט">כיתה ט'</option>
-                            <option value="י">כיתה י'</option>
-                            <option value="יא">כיתה יא'</option>
-                            <option value="יב">כיתה יב'</option>
-                            <option value="מבוגרים">מבוגרים</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="subject">מקצוע *</label>
-                        <select id="subject" name="subject" required>
-                            <option value="">בחר מקצוע</option>
-                            <option value="מתמטיקה">מתמטיקה</option>
-                            <option value="פיזיקה">פיזיקה</option>
-                            <option value="אנגלית">אנגלית</option>
-                            <option value="מספר מקצועות">מספר מקצועות</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="level">רמה *</label>
-                        <select id="level" name="level" required>
-                            <option value="">בחר רמה</option>
-                            <option value="3 יחידות">3 יחידות</option>
-                            <option value="4 יחידות">4 יחידות</option>
-                            <option value="5 יחידות">5 יחידות</option>
-                            <option value="לא יודע">לא בטוח</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">פרטים נוספים</label>
-                        <textarea id="message" name="message" rows="4" placeholder="ספר/י על הקשיים שלך, מטרות, או כל מידע רלוונטי אחר..."></textarea>
-                    </div>
-
-                    <button type="submit" class="cta-button" style="width: 100%; margin-top: 1rem;">💬 שלח הודעה לווטסאפ</button>
-                </form>
+    <section id="contact" class="section contact fade-in">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">יצירת קשר</div>
+                <h2 class="section-title">בואו נמצא את הנכס המושלם</h2>
+                <p class="section-description">
+                    צרו קשר עוד היום לייעוץ VIP ראשוני חינם עם מומחי הנדל״ן שלנו
+                </p>
             </div>
-
-            <div class="contact-info">
-                <h3>📞 פרטי יצירת קשר</h3>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>פרטי יצירת קשר VIP</h3>
+                    
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4>טלפון VIP</h4>
+                                <p>03-555-0123<br>זמינות 24/7 לשירות מיידי</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h4>וואטסאפ בלעדי</h4>
+                                <p>050-555-0123<br>תשובות מיידיות וייעוץ מקצועי</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4>אימייל VIP</h4>
+                                <p>vip@realestate-pro.co.il<br>מענה תוך שעה אחת</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4>משרדי יוקרה</h4>
+                                <p>מגדל עזריאלי סרונה, קומה 35<br>תל אביב יפו</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 
-                <div class="contact-item">
-                    <span>📱</span>
-                    <div>
-                        <strong>טלפון:</strong><br>
-                        050-123-4567
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <span>📧</span>
-                    <div>
-                        <strong>אימייל:</strong><br>
-                        ronit.levy.teacher@gmail.com
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <span>📍</span>
-                    <div>
-                        <strong>אזור שירות:</strong><br>
-                        מרכז הארץ + שיעורים אונליין
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <span>🕐</span>
-                    <div>
-                        <strong>שעות פעילות:</strong><br>
-                        ראשון-חמישי: 14:00-21:00<br>
-                        שישי: 9:00-13:00
-                    </div>
-                </div>
-
-                <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(255,255,255,0.1); border-radius: 15px;">
-                    <h4 style="margin-bottom: 1rem;">💡 ייעוץ ראשוני חינם!</h4>
-                    <p>שיחה של 15 דקות לאבחון הצרכים ובניית תכנית לימודים אישית</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- FAQ Section -->
-        <div style="margin-top: 4rem; background: white; padding: 3rem; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1);">
-            <h3 style="text-align: center; color: #1e3a8a; margin-bottom: 2rem; font-size: 2rem;">❓ שאלות נפוצות</h3>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                <div>
-                    <h4 style="color: #1e3a8a; margin-bottom: 0.5rem;">💰 מה המחיר לשיעור?</h4>
-                    <p style="color: #64748b;">מתמטיקה: ₪200, פיזיקה: ₪220, אנגלית: ₪180. הנחות לחבילות שיעורים.</p>
-                </div>
-                <div>
-                    <h4 style="color: #1e3a8a; margin-bottom: 0.5rem;">📍 איפה מתקיימים השיעורים?</h4>
-                    <p style="color: #64748b;">בבית התלמיד, במרכז הלימודים שלי, או שיעורים אונליין באמצעות זום.</p>
-                </div>
-                <div>
-                    <h4 style="color: #1e3a8a; margin-bottom: 0.5rem;">⏰ כמה זמן לוקח שיעור?</h4>
-                    <p style="color: #64748b;">שיעור רגיל: 90 דקות. שיעור אינטנסיבי לפני בחינה: 2-3 שעות.</p>
-                </div>
-                <div>
-                    <h4 style="color: #1e3a8a; margin-bottom: 0.5rem;">📚 איך אני מכינה לבגרויות?</h4>
-                    <p style="color: #64748b;">תכנית אישית, חומרי לימוד מתקדמים, סימולציות מבחנים ומעקב אישי.</p>
+                <div class="contact-form">
+                    <h3 class="form-title">ייעוץ VIP ראשוני חינם</h3>
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">שם פרטי</label>
+                                <input type="text" class="form-input" id="firstName" required placeholder="השם הפרטי שלך">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">שם משפחה</label>
+                                <input type="text" class="form-input" id="lastName" required placeholder="שם המשפחה שלך">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">טלפון</label>
+                                <input type="tel" class="form-input" id="phone" required placeholder="050-123-4567">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">אימייל</label>
+                                <input type="email" class="form-input" id="email" placeholder="your@email.com">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">סוג הנכס</label>
+                                <select class="form-select" id="propertyType" required>
+                                    <option value="">בחר סוג נכס</option>
+                                    <option value="villa">וילה יוקרתית</option>
+                                    <option value="penthouse">פנטהאוז</option>
+                                    <option value="apartment">דירת יוקרה</option>
+                                    <option value="estate">אחוזה</option>
+                                    <option value="commercial">נכס מסחרי</option>
+                                    <option value="investment">נכס השקעה</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">תקציב (₪)</label>
+                                <select class="form-select" id="budget">
+                                    <option value="">בחר טווח תקציב</option>
+                                    <option value="5-10M">5-10 מיליון</option>
+                                    <option value="10-20M">10-20 מיליון</option>
+                                    <option value="20-50M">20-50 מיליון</option>
+                                    <option value="50M+">50+ מיליון</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">אזור מועדף</label>
+                            <input type="text" class="form-input" id="preferredArea" placeholder="תל אביב, הרצליה, קיסריה...">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">פרטים נוספים</label>
+                            <textarea class="form-textarea" id="message" placeholder="ספר לנו על הנכס החלומות שלך..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="form-submit">
+                            שלח בקשה לייעוץ VIP
+                        </button>
+                        
+                        <p style="font-size: 12px; text-align: center; margin-top: 20px; opacity: 0.8;">
+                            🔒 הפרטים שלך נשמרים בסודיות מוחלטת ויטופלו על ידי מומחי VIP בלבד
+                        </p>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>RealEstate Pro</h4>
+                    <p>מובילים בנדל״ן יוקרתי בישראל עם 15+ שנות ניסיון. מתמחים בנכסי יוקרה יוצאי דופן ושירות VIP ברמה עולמית.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>סוגי נכסים</h4>
+                    <ul>
+                        <li><a href="#properties">וילות יוקרתיות</a></li>
+                        <li><a href="#properties">פנטהאוזים</a></li>
+                        <li><a href="#properties">דירות יוקרה</a></li>
+                        <li><a href="#properties">אחוזות היסטוריות</a></li>
+                        <li><a href="#properties">נכסי השקעה</a></li>
+                        <li><a href="#properties">נכסים מסחריים</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>השירותים שלנו</h4>
+                    <ul>
+                        <li><a href="#contact">ייעוץ VIP</a></li>
+                        <li><a href="#contact">סיורים וירטואליים</a></li>
+                        <li><a href="#contact">ייעוץ השקעות</a></li>
+                        <li><a href="#contact">שירות 24/7</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>יצירת קשר VIP</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> 03-555-0123</li>
+                        <li><i class="fab fa-whatsapp"></i> 050-555-0123</li>
+                        <li><i class="fas fa-envelope"></i> vip@realestate-pro.co.il</li>
+                        <li><i class="fas fa-map-marker-alt"></i> מגדל עזריאלי סרונה, תל אביב</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 RealEstate Pro - נדל״ן יוקרתי ברמה עולמית. כל הזכויות שמורות.</p>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        // Navigation functionality
-        function showSection(sectionName) {
-            // Hide all sections
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
+        // Loading Screen
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loadingScreen').classList.add('hidden');
+            }, 2000);
+        });
 
-            // Show selected section
-            document.getElementById(sectionName).classList.add('active');
-
-            // Update navigation
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-            });
-            
-            const activeLink = document.querySelector(`[data-section="${sectionName}"]`);
-            if (activeLink) {
-                activeLink.classList.add('active');
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.pageYOffset > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
             }
+        });
 
-            // Close mobile menu if open
-            document.getElementById('navLinks').classList.remove('active');
-        }
-
-        // Navigation click handlers
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', (e) => {
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const section = link.getAttribute('data-section');
-                showSection(section);
-            });
-        });
-
-        // Mobile menu toggle
-        function toggleMobileMenu() {
-            document.getElementById('navLinks').classList.toggle('active');
-        }
-
-        // Articles filtering
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Update active filter button
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-
-                // Filter articles
-                const filter = btn.getAttribute('data-filter');
-                const articles = document.querySelectorAll('.article-card');
-                
-                articles.forEach(article => {
-                    if (filter === 'all' || article.getAttribute('data-category') === filter) {
-                        article.style.display = 'block';
-                    } else {
-                        article.style.display = 'none';
-                    }
-                });
-            });
-        });
-
-        // Contact form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const email = document.getElementById('email').value;
-            const grade = document.getElementById('grade').value;
-            const subject = document.getElementById('subject').value;
-            const level = document.getElementById('level').value;
-            const message = document.getElementById('message').value;
-
-            // Create WhatsApp message
-            let whatsappMessage = `שלום ד"ר רונית לוי,\n\n`;
-            whatsappMessage += `אני ${name} ואני מעוניין/ת בשיעורים פרטיים:\n\n`;
-            whatsappMessage += `📚 פרטים:\n`;
-            whatsappMessage += `• כיתה: ${grade}\n`;
-            whatsappMessage += `• מקצוע: ${subject}\n`;
-            whatsappMessage += `• רמה: ${level}\n`;
-            whatsappMessage += `• טלפון: ${phone}\n`;
-            if (email) whatsappMessage += `• אימייל: ${email}\n`;
-            if (message) whatsappMessage += `\n💬 פרטים נוספים:\n${message}\n`;
-            whatsappMessage += `\nתודה!`;
-
-            const whatsappUrl = `https://wa.me/972501234567?text=${encodeURIComponent(whatsappMessage)}`;
-            window.open(whatsappUrl, '_blank');
-        });
-
-        // Smooth scroll animations
-        window.addEventListener('scroll', () => {
-            const elements = document.querySelectorAll('.stat-item, .service-card, .article-card');
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
         });
 
-        // Initialize animations
-        document.addEventListener('DOMContentLoaded', () => {
-            const elements = document.querySelectorAll('.stat-item, .service-card, .article-card');
-            elements.forEach(element => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(20px)';
-                element.style.transition = 'all 0.6s ease';
+        // Scroll animations
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(section => {
+            observer.observe(section);
+        });
+
+        // WhatsApp contact function
+        function contactWhatsApp(service) {
+            const message = `שלום! אני מעוניין/ת בשירותי נדל״ן יוקרתי VIP 🏡
+
+🔹 השירות המעניין אותי: ${service}
+
+💎 אני מחפש/ת נכס יוקרתי ברמה עולמית
+🎯 אשמח לקבל ייעוץ VIP מקצועי ומותאם אישית
+
+📞 זמין/ה לשיחה: כן
+🕐 זמן מועדף לפנייה: בכל עת
+
+תודה על השירות המקצועי! 
+RealEstate Pro - הבחירה של אנשים מיוחדים 🌟`;
+            
+            const whatsappUrl = `https://wa.me/972505550123?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Contact form handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const propertyType = document.getElementById('propertyType').value;
+            const budget = document.getElementById('budget').value;
+            const preferredArea = document.getElementById('preferredArea').value;
+            const message = document.getElementById('message').value;
+            
+            const propertyTypes = {
+                'villa': 'וילה יוקרתית',
+                'penthouse': 'פנטהאוז',
+                'apartment': 'דירת יוקרה',
+                'estate': 'אחוזה',
+                'commercial': 'נכס מסחרי',
+                'investment': 'נכס השקעה'
+            };
+            
+            let whatsappMessage = `🏆 בקשה לייעוץ VIP - RealEstate Pro 🏆
+
+👤 פרטי הלקוח:
+שם: ${firstName} ${lastName}
+📱 טלפון: ${phone}`;
+
+            if (email) {
+                whatsappMessage += `\n📧 אימייל: ${email}`;
+            }
+
+            whatsappMessage += `\n\n🏡 פרטי הנכס המבוקש:
+סוג נכס: ${propertyTypes[propertyType] || 'לא צוין'}`;
+
+            if (budget) {
+                whatsappMessage += `\n💰 תקציב: ${budget}`;
+            }
+
+            if (preferredArea) {
+                whatsappMessage += `\n📍 אזור מועדף: ${preferredArea}`;
+            }
+
+            if (message) {
+                whatsappMessage += `\n\n💬 פרטים נוספים:\n${message}`;
+            }
+
+            whatsappMessage += `\n\n🌟 מבקש/ת שירות VIP מקצועי ומותאם אישית
+⏰ זמין/ה לייעוץ מיידי
+🎯 מחפש/ת את הנכס המושלם ברמה עולמית
+
+תודה על השירות המקצועי! 🙏`;
+
+            const whatsappUrl = `https://wa.me/972505550123?text=${encodeURIComponent(whatsappMessage)}`;
+            window.open(whatsappUrl, '_blank');
+            
+            // Reset form
+            this.reset();
+            
+            // Success message
+            alert('הבקשה נשלחה בהצלחה! נחזור אליך בהקדם.');
+        });
+
+        // Counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.hero-stat-number');
+            
+            counters.forEach(counter => {
+                const target = counter.textContent;
+                const isPercent = target.includes('%');
+                const isPlus = target.includes('+');
+                const isCurrency = target.includes('₪');
+                
+                let numericTarget = parseInt(target.replace(/[^\d]/g, ''));
+                
+                const duration = 3000;
+                const increment = numericTarget / (duration / 50);
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= numericTarget) {
+                        if (isCurrency) {
+                            counter.textContent = `₪${numericTarget}M+`;
+                        } else if (isPercent) {
+                            counter.textContent = `${numericTarget}%`;
+                        } else if (isPlus) {
+                            counter.textContent = `${numericTarget}+`;
+                        } else {
+                            counter.textContent = numericTarget;
+                        }
+                        clearInterval(timer);
+                    } else {
+                        const currentInt = Math.floor(current);
+                        if (isCurrency) {
+                            counter.textContent = `₪${currentInt}M+`;
+                        } else if (isPercent) {
+                            counter.textContent = `${currentInt}%`;
+                        } else if (isPlus) {
+                            counter.textContent = `${currentInt}+`;
+                        } else {
+                            counter.textContent = currentInt;
+                        }
+                    }
+                }, 50);
+            });
+        }
+
+        // Trigger counter animation when hero is visible
+        const heroObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTimeout(animateCounters, 1000);
+                    heroObserver.unobserve(entry.target);
+                }
             });
         });
+
+        heroObserver.observe(document.querySelector('.hero'));
     </script>
 </body>
-</html>
+</html>">
+                        <div class="property-price">₪25,000,000</div>
+                        <h3 class="property-title">וילה יוקרתית עם נוף פנורמי לים</h3>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            קיסריה, חוף הכרמל
+                        </div>
+                        
+                        <div class="property-features">
+                            <div class="property-feature">
+                                <span class="property-feature-number">8</span>
+                                <span class="property-feature-label">חדרים</span>
+                            </div>
+                            <div class="property-feature">
+                                <span class="property-feature-number">6</span>
+                                <span class="property-feature-label">שירותים</span>
+                            </div>
+                            <div class="property-feature">
+                                <span class="property-feature-number">1,200</span>
+                                <span class="property-feature-label">מ״ר</span>
+                            </div>
+                        </div>
+                        
+                        <div class="property-description">
+                            <p>וילה יוקרתית ייחודית עם נוף פנורמי מרהיב לים התיכון. המבנה מתפרש על פני 3 קומות ומציע חוויית מגורים יוצאת דופן עם בריכה פרטית, גינה מעוצבת ומערכות חכמות מתקדמות.</p>
+                        </div>
+                        
+                        <div class="property-actions">
+                            <a href="#" class="property-btn" onclick="contactWhatsApp('וילה יוקרתית קיסריה - 25M')">פרטים</a>
+                            <a href="#" class="property-btn" onclick="contactWhatsApp('סיור וירטואלי - וילה קיסריה')">סיור וירטואלי</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property 2 -->
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=90" alt="פנטהאוז יוקרתי">
+                        <div class="property-badge">חדש</div>
+                    </div>
+                    <div class="property-content
