@@ -874,48 +874,6 @@
                                 <h4>טיפול קרטין מזין</h4>
                             </div>
                         </div>
-                        
-                        <div class="gallery-item" data-category="color">
-                            <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="צביעה אומברה">
-                            <div class="gallery-overlay">
-                                <h4>צביעת אומברה עדינה</h4>
-                            </div>
-                        </div>
-                        
-                        <div class="gallery-item" data-category="haircuts">
-                            <img src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="תספורת שכבות">
-                            <div class="gallery-overlay">
-                                <h4>תספורת שכבות דינמית</h4>
-                            </div>
-                        </div>
-                        
-                        <div class="gallery-item" data-category="evening">
-                            <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="תסרוקת כלה">
-                            <div class="gallery-overlay">
-                                <h4>תסרוקת כלה רומנטית</h4>
-                            </div>
-                        </div>
-                        
-                        <div class="gallery-item" data-category="men">
-                            <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="עיצוב זקן">
-                            <div class="gallery-overlay">
-                                <h4>עיצוב זקן מקצועי</h4>
-                            </div>
-                        </div>
-                        
-                        <div class="gallery-item" data-category="color">
-                            <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="בליאז' מודרני">
-                            <div class="gallery-overlay">
-                                <h4>בליאז' מודרני ועדין</h4>
-                            </div>
-                        </div>
-                        
-                        <div class="gallery-item" data-category="haircuts">
-                            <img src="https://images.unsplash.com/photo-1522338242992-e1a54906a8da?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="תספורת קצרה">
-                            <div class="gallery-overlay">
-                                <h4>תספורת קצרה אלגנטית</h4>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -1077,16 +1035,6 @@
                         <li><a onclick="showPage('contact')">צור קשר</a></li>
                         <li><a onclick="showPage('contact')">הזמנת תור מקוון</a></li>
                     </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>עקבו אחרינו</h3>
-                    <p>הישארו מעודכנים עם הטרנדים החדשים ביותר ועבודות המקצועיות שלנו</p>
-                    <div style="margin-top: 1rem;">
-                        <a href="#" style="display: inline-block; margin: 0 1rem 1rem 0; padding: 0.5rem 1rem; background: var(--gradient); color: white; border-radius: 8px; text-decoration: none; font-weight: 600;">📘 Facebook</a>
-                        <a href="#" style="display: inline-block; margin: 0 1rem 1rem 0; padding: 0.5rem 1rem; background: var(--gradient); color: white; border-radius: 8px; text-decoration: none; font-weight: 600;">📷 Instagram</a>
-                        <a href="https://wa.me/972501234567" target="_blank" style="display: inline-block; margin: 0 1rem 1rem 0; padding: 0.5rem 1rem; background: #25d366; color: white; border-radius: 8px; text-decoration: none; font-weight: 600;">💬 WhatsApp</a>
-                    </div>
                 </div>
             </div>
             
