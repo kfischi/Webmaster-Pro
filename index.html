@@ -3,32 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebMaster Pro - פלטפורמת אתרים מקצועית | 11+ דמואים חיים</title>
-    <meta name="description" content="WebMaster Pro - פלטפורמת בניית אתרים מקצועית. 11+ דמואים חיים, עיצוב ברמה עולמית, מוכן למכירה מיידית.">
+    <title>WebMaster Pro - Framer-Inspired Gallery | פלטפורמת אתרים מתקדמת</title>
+    <meta name="description" content="WebMaster Pro - פלטפורמת בניית אתרים עם אנימציות ברמת Framer. חוויה ויזואלית מהפכנית עם 11+ דמואים מקצועיים.">
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --primary-blue: #667eea;
-            --primary-purple: #764ba2;
-            --accent-gold: #FFD700;
-            --accent-pink: #ff6b9d;
-            --text-dark: #2c3e50;
-            --text-light: #7f8c8d;
-            --white: #ffffff;
-            --gray-100: #f8f9fa;
-            --gray-200: #e9ecef;
-            --success: #27ae60;
-            --shadow-soft: 0 10px 40px rgba(0,0,0,0.1);
-            --shadow-medium: 0 20px 60px rgba(0,0,0,0.15);
-            --shadow-strong: 0 30px 80px rgba(0,0,0,0.2);
-            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-success: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-            --gradient-gold: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-            --border-radius: 16px;
-            --border-radius-large: 24px;
-            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --primary: #0066FF;
+            --secondary: #8B5CF6;
+            --accent: #06FFA5;
+            --dark: #1a1a1a;
+            --light: #FFFFFF;
+            --gray-50: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-200: #E5E5E5;
+            --gray-300: #D4D4D4;
+            --gray-400: #A3A3A3;
+            --gray-500: #737373;
+            --gray-600: #525252;
+            --gray-700: #404040;
+            --gray-800: #2a2a2a;
+            --gray-900: #333333;
+            
+            --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            --gradient-accent: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+            --gradient-dark: linear-gradient(135deg, var(--gray-900) 0%, var(--gray-800) 100%);
+            
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+            
+            --blur-sm: blur(4px);
+            --blur: blur(8px);
+            --blur-lg: blur(16px);
+            --blur-xl: blur(24px);
         }
 
         * {
@@ -38,43 +50,222 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background: var(--white);
+            font-family: 'Poppins', sans-serif;
+            background: var(--dark);
+            color: var(--light);
             overflow-x: hidden;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            cursor: auto; /* החזרת העכבר הרגיל */
         }
 
-        /* Cart Icon */
-        .cart-icon {
+        /* FRAMER-STYLE BACKGROUND */
+        .framer-bg {
             position: fixed;
-            top: 20px;
-            left: 20px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(0, 102, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(6, 255, 165, 0.03) 0%, transparent 50%),
+                var(--dark);
+            z-index: -3;
+        }
+
+        /* FRAMER-STYLE GRID */
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        /* FRAMER-STYLE LOADING */
+        .framer-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+
+        .framer-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-logo {
+            font-size: 48px;
+            font-weight: 800;
             background: var(--gradient-primary);
-            color: white;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .loader-progress {
+            width: 200px;
+            height: 2px;
+            background: var(--gray-800);
+            border-radius: 1px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .loader-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            animation: progressSlide 2s ease-in-out infinite;
+        }
+
+        @keyframes progressSlide {
+            0% { left: -100%; }
+            50% { left: 0%; }
+            100% { left: 100%; }
+        }
+
+        /* FRAMER-STYLE NAVIGATION */
+        .framer-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: var(--blur);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .framer-nav.scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            border-bottom-color: var(--primary);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+        }
+
+        .nav-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .nav-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: var(--gray-300);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 17px;
+            position: relative;
+            transition: all 0.3s ease;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .nav-menu a::before {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-menu a:hover {
+            color: var(--light);
+            transform: translateY(-1px);
+        }
+
+        .nav-menu a:hover::before {
+            width: 100%;
+        }
+
+        /* FLOATING CART */
+        .floating-cart {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
             width: 60px;
             height: 60px;
+            background: var(--gradient-primary);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 24px;
+            color: var(--light);
             cursor: pointer;
-            box-shadow: var(--shadow-medium);
-            z-index: 1000;
-            transition: var(--transition);
+            box-shadow: var(--shadow-2xl);
+            z-index: 1001;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .cart-icon:hover {
+        .floating-cart:hover {
             transform: scale(1.1);
+            box-shadow: 0 30px 60px rgba(0, 102, 255, 0.4);
         }
 
-        .cart-count {
+        .cart-badge {
             position: absolute;
-            top: -5px;
-            right: -5px;
-            background: var(--accent-pink);
-            color: white;
+            top: -8px;
+            right: -8px;
+            background: var(--accent);
+            color: var(--dark);
             font-size: 12px;
             font-weight: 700;
             min-width: 20px;
@@ -85,478 +276,59 @@
             justify-content: center;
         }
 
-        /* Header */
-        .header {
-            background: var(--gradient-primary);
-            color: white;
-            text-align: center;
-            padding: 80px 0 60px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: float 20s linear infinite;
-        }
-
-        .header-content {
-            position: relative;
-            z-index: 2;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 30px;
-        }
-
-        .header-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 64px;
-            font-weight: 800;
-            margin-bottom: 20px;
-            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
-        }
-
-        .header-subtitle {
-            font-size: 24px;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-
-        .header-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .stat-card {
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(20px);
-            padding: 30px;
-            border-radius: var(--border-radius);
-            border: 1px solid rgba(255,255,255,0.2);
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 36px;
-            font-weight: 800;
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .stat-label {
-            font-size: 14px;
-            opacity: 0.9;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Navigation */
-        .nav-tabs {
-            background: white;
-            padding: 20px 0;
-            box-shadow: var(--shadow-soft);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            padding: 0 30px;
-        }
-
-        .nav-tab {
-            padding: 12px 24px;
-            background: var(--gray-100);
-            border: none;
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            color: var(--text-dark);
-        }
-
-        .nav-tab.active,
-        .nav-tab:hover {
-            background: var(--gradient-primary);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        /* Main Content */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 60px 30px;
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 42px;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 20px;
-            color: var(--text-dark);
-        }
-
-        .section-description {
-            font-size: 18px;
-            color: var(--text-light);
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto 60px;
-        }
-
-        /* Demo Grid */
-        .demos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 40px;
-            margin-bottom: 80px;
-        }
-
-        .demo-card {
-            background: white;
-            border-radius: var(--border-radius-large);
-            overflow: hidden;
-            box-shadow: var(--shadow-medium);
-            transition: var(--transition);
-            border: 1px solid var(--gray-200);
-            position: relative;
-        }
-
-        .demo-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-strong);
-        }
-
-        .demo-card.featured {
-            border: 3px solid var(--accent-gold);
-            background: linear-gradient(145deg, #fff9e6, #ffffff);
-        }
-
-        .demo-card.featured::before {
-            content: '🆕 חדש!';
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--gradient-gold);
-            color: var(--text-dark);
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-            z-index: 2;
-        }
-
-        .demo-card.featured:first-child::before {
-            content: '🔥 הפלטפורמה!';
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-        }
-
-        .demo-image {
-            height: 250px;
-            background: var(--gradient-primary);
+        /* HERO SECTION - FRAMER STYLE */
+        .hero-section {
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 64px;
-            color: white;
+            text-align: center;
             position: relative;
             overflow: hidden;
+            padding: 120px 40px 60px; /* הגדלתי הפדינג העליון */
         }
 
-        .demo-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
         }
 
-        .demo-content {
-            padding: 30px;
-        }
-
-        .demo-category {
-            display: inline-block;
-            background: var(--gradient-primary);
-            color: white;
-            padding: 6px 15px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-        }
-
-        .demo-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: var(--text-dark);
-        }
-
-        .demo-description {
-            color: var(--text-light);
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        .demo-features {
-            list-style: none;
-            margin-bottom: 25px;
-        }
-
-        .demo-features li {
-            padding: 5px 0;
-            color: var(--text-light);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 14px;
-        }
-
-        .demo-features li::before {
-            content: '✓';
-            color: var(--success);
-            font-weight: bold;
-        }
-
-        .demo-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 20px;
-            border-top: 1px solid var(--gray-200);
-        }
-
-        .demo-price {
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--primary-blue);
-        }
-
-        .demo-actions {
-            display: flex;
-            gap: 10px;
-        }
-
-        .btn {
-            padding: 12px 20px;
-            border: none;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            text-decoration: none;
+        .hero-badge {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            font-size: 14px;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            padding: 10px 24px;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--gray-300);
+            margin-bottom: 32px;
+            backdrop-filter: var(--blur);
+            animation: badgeFloat 3s ease-in-out infinite;
+            font-family: 'Space Grotesk', sans-serif;
         }
 
-        .btn-primary {
-            background: var(--gradient-primary);
-            color: white;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        @keyframes badgeFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
         }
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-        }
-
-        .btn-outline {
-            background: white;
-            color: var(--primary-blue);
-            border: 2px solid var(--primary-blue);
-        }
-
-        .btn-outline:hover {
-            background: var(--primary-blue);
-            color: white;
-        }
-
-        .btn-success {
-            background: var(--gradient-success);
-            color: white;
-        }
-
-        .btn-success:hover {
-            transform: translateY(-2px);
-        }
-
-        /* Cart Sidebar */
-        .cart-sidebar {
-            position: fixed;
-            top: 0;
-            left: -400px;
-            width: 400px;
-            height: 100vh;
-            background: white;
-            box-shadow: var(--shadow-strong);
-            transition: var(--transition);
-            z-index: 2000;
-            overflow-y: auto;
-        }
-
-        .cart-sidebar.open {
-            left: 0;
-        }
-
-        .cart-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(0,0,0,0.5);
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-            z-index: 1500;
-        }
-
-        .cart-overlay.open {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .cart-header {
-            padding: 30px;
-            background: var(--gradient-primary);
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .cart-title {
-            font-size: 24px;
-            font-weight: 700;
-        }
-
-        .cart-close {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        .cart-body {
-            padding: 30px;
-        }
-
-        .cart-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 20px 0;
-            border-bottom: 1px solid var(--gray-200);
-        }
-
-        .cart-item-image {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient-primary);
-            border-radius: var(--border-radius);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 20px;
-        }
-
-        .cart-item-info {
-            flex: 1;
-        }
-
-        .cart-item-title {
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .cart-item-price {
-            color: var(--text-light);
-            font-size: 14px;
-        }
-
-        .cart-item-remove {
-            background: none;
-            border: none;
-            color: var(--accent-pink);
-            cursor: pointer;
-            font-size: 18px;
-            padding: 5px;
-        }
-
-        .cart-total {
-            padding: 20px 0;
-            border-top: 2px solid var(--gray-200);
-            text-align: center;
-        }
-
-        .cart-total-amount {
-            font-size: 32px;
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 68px;
             font-weight: 800;
-            color: var(--primary-blue);
-            margin-bottom: 20px;
+            line-height: 1.1;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 28px;
+            animation: titleReveal 1s ease-out;
         }
 
-        .cart-checkout {
-            width: 100%;
-            padding: 18px;
-            background: var(--gradient-success);
-            color: white;
-            border: none;
-            border-radius: var(--border-radius);
-            font-size: 18px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .cart-checkout:hover {
-            transform: translateY(-2px);
-        }
-
-        .cart-empty {
-            text-align: center;
-            padding: 40px 20px;
-            color: var(--text-light);
-        }
-
-        .cart-empty-icon {
-            font-size: 64px;
-            margin-bottom: 20px;
-            opacity: 0.5;
-        }
-
-        /* Animations */
-        @keyframes float {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(30px, -30px) rotate(120deg); }
-            66% { transform: translate(-20px, 20px) rotate(240deg); }
-            100% { transform: translate(0, 0) rotate(360deg); }
-        }
-
-        @keyframes fadeInUp {
+        @keyframes titleReveal {
             from {
                 opacity: 0;
                 transform: translateY(30px);
@@ -567,643 +339,761 @@
             }
         }
 
-        .fade-in {
-            animation: fadeInUp 0.6s ease-out;
+        .hero-description {
+            font-size: 20px;
+            color: var(--gray-400);
+            margin-bottom: 44px;
+            max-width: 520px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: descriptionReveal 1s ease-out 0.2s both;
+            font-weight: 400;
+            line-height: 1.6;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header-title {
-                font-size: 42px;
+        @keyframes descriptionReveal {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
-            
-            .header-subtitle {
-                font-size: 18px;
-            }
-            
-            .demos-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .container {
-                padding: 40px 20px;
-            }
-            
-            .cart-sidebar {
-                width: 100%;
-                left: -100%;
-            }
-            
-            .nav-container {
-                flex-direction: column;
-                align-items: center;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        /* Success Message */
-        .success-message {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 40px;
-            border-radius: var(--border-radius-large);
-            box-shadow: var(--shadow-strong);
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 32px;
+            margin: 50px 0;
+            animation: statsReveal 1s ease-out 0.4s both;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @keyframes statsReveal {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stat-item {
             text-align: center;
-            z-index: 3000;
+        }
+
+        .stat-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: ctaReveal 1s ease-out 0.6s both;
+            margin-top: 40px;
+        }
+
+        @keyframes ctaReveal {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-primary {
+            background: var(--gradient-primary);
+            color: var(--light);
+            border: none;
+        }
+
+        .cta-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-primary:hover::before {
+            left: 100%;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(0, 102, 255, 0.4);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: var(--light);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .cta-secondary:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* DEMOS SECTION */
+        .demos-section {
+            padding: 120px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 52px;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 24px;
+        }
+
+        .section-subtitle {
+            font-size: 20px;
+            color: var(--gray-400);
+            max-width: 640px;
+            margin: 0 auto;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        /* FRAMER-STYLE GRID */
+        .demos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            min-height: 200px; /* זה יבטיח שהגריד יהיה נראה גם אם אין תוכן */
+        }
+
+        .demo-card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .demo-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
             opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
+            transition: opacity 0.3s ease;
+            z-index: 1;
         }
 
-        .success-message.show {
+        .demo-card:hover::before {
+            opacity: 0.08;
+        }
+
+        .demo-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 102, 255, 0.4);
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.3),
+                0 0 50px rgba(0, 102, 255, 0.2);
+        }
+
+        .demo-image {
+            height: 200px;
+            background: var(--gradient-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .demo-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .demo-card:hover .demo-image::after {
+            left: 100%;
+        }
+
+        .demo-image .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            transition: opacity 0.3s ease;
+        }
+
+        .demo-card:hover .demo-image .overlay {
+            opacity: 0.1;
+        }
+
+        .demo-content {
+            padding: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .demo-category {
+            display: inline-block;
+            background: rgba(0, 102, 255, 0.1);
+            color: var(--primary);
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 18px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .demo-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--light);
+            margin-bottom: 14px;
+        }
+
+        .demo-description {
+            color: var(--gray-400);
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 22px;
+            font-weight: 400;
+        }
+
+        .demo-features {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .demo-features li {
+            color: var(--gray-500);
+            font-size: 13px;
+            padding: 4px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .demo-features li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .demo-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .demo-price {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .demo-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .demo-button {
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .demo-button-view {
+            background: transparent;
+            color: var(--gray-300);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .demo-button-view:hover {
+            color: var(--light);
+            border-color: var(--primary);
+            background: rgba(0, 102, 255, 0.15);
+        }
+
+        .demo-button-cart {
+            background: var(--primary);
+            color: var(--light);
+        }
+
+        .demo-button-cart:hover {
+            background: var(--secondary);
+            transform: translateY(-1px);
+        }
+
+        /* FEATURED BADGE */
+        .featured {
+            position: relative;
+        }
+
+        .featured::after {
+            content: '⭐ מומלץ';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--gradient-accent);
+            color: var(--dark);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            z-index: 3;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 42px; }
+            .hero-description { font-size: 18px; }
+            .section-title { font-size: 36px; }
+            .section-subtitle { font-size: 18px; }
+            .nav-menu a { font-size: 16px; }
+            .hero-stats { 
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 24px;
+                margin: 40px 0;
+            }
+            .demos-grid { grid-template-columns: 1fr; gap: 20px; }
+            .nav-menu { display: none; }
+            .cta-button { padding: 14px 24px; font-size: 15px; }
+            .hero-section { padding: 100px 20px 40px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title { font-size: 32px; }
+            .hero-description { font-size: 16px; }
+            .section-title { font-size: 28px; }
+            .section-subtitle { font-size: 16px; }
+            .nav-container { padding: 16px 20px; }
+            .nav-logo { font-size: 24px; }
+            .demos-section { padding: 80px 20px; }
+            .hero-stats { 
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            .stat-number { font-size: 24px; }
+            .stat-label { font-size: 11px; }
+        }
+
+        /* SCROLL REVEAL ANIMATIONS */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.revealed {
             opacity: 1;
-            visibility: visible;
-        }
-
-        .success-icon {
-            font-size: 64px;
-            color: var(--success);
-            margin-bottom: 20px;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <!-- Cart Icon -->
-    <div class="cart-icon" onclick="toggleCart()">
-        🛒
-        <span class="cart-count" id="cartCount">0</span>
-    </div>
+    <!-- Custom Cursor - REMOVED -->
 
-    <!-- Cart Overlay -->
-    <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+    <!-- Background -->
+    <div class="framer-bg"></div>
+    <div class="grid-overlay"></div>
 
-    <!-- Cart Sidebar -->
-    <div class="cart-sidebar" id="cartSidebar">
-        <div class="cart-header">
-            <h2 class="cart-title">עגלת קניות</h2>
-            <button class="cart-close" onclick="closeCart()">✕</button>
-        </div>
-        <div class="cart-body">
-            <div id="cartItems"></div>
-            <div class="cart-total">
-                <div class="cart-total-amount" id="cartTotal">₪0</div>
-                <button class="cart-checkout" onclick="checkout()">
-                    💳 המשך לתשלום
-                </button>
-            </div>
+    <!-- Loading Screen -->
+    <div class="framer-loader" id="framerLoader">
+        <div class="loader-content">
+            <div class="loader-logo">WebMaster Pro</div>
+            <div class="loader-progress"></div>
         </div>
     </div>
-
-    <!-- Success Message -->
-    <div class="success-message" id="successMessage">
-        <div class="success-icon">✅</div>
-        <h3>נוסף לעגלה בהצלחה!</h3>
-        <p>המוצר נוסף לעגלת הקניות שלך</p>
-    </div>
-
-    <!-- Header -->
-    <header class="header">
-        <div class="header-content">
-            <h1 class="header-title">WebMaster Pro</h1>
-            <p class="header-subtitle">פלטפורמת אתרים מקצועית ברמה עולמית</p>
-            
-            <div class="header-stats">
-                <div class="stat-card">
-                    <span class="stat-number">11+</span>
-                    <span class="stat-label">דמואים חיים</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">500+</span>
-                    <span class="stat-label">לקוחות מרוצים</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">24/7</span>
-                    <span class="stat-label">תמיכה טכנית</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">100%</span>
-                    <span class="stat-label">רספונסיבי</span>
-                </div>
-            </div>
-        </div>
-    </header>
 
     <!-- Navigation -->
-    <nav class="nav-tabs">
+    <nav class="framer-nav" id="framerNav">
         <div class="nav-container">
-            <button class="nav-tab active" onclick="filterDemos('all')">הכל</button>
-            <button class="nav-tab" onclick="filterDemos('health')">בריאות ויופי</button>
-            <button class="nav-tab" onclick="filterDemos('business')">עסקים</button>
-            <button class="nav-tab" onclick="filterDemos('education')">חינוך</button>
-            <button class="nav-tab" onclick="filterDemos('creative')">יצירתי</button>
+            <div class="nav-logo">WebMaster Pro</div>
+            <ul class="nav-menu">
+                <li><a href="#home">בית</a></li>
+                <li><a href="#demos">דמואים</a></li>
+                <li><a href="#about">אודות</a></li>
+                <li><a href="#contact">צור קשר</a></li>
+            </ul>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="container">
-        <h2 class="section-title">הדמואים החיים שלנו</h2>
-        <p class="section-description">
-            כל דמו הוא אתר מלא ומקצועי ברמה עולמית, מוכן למכירה ושימוש מיידי
-        </p>
+    <!-- Floating Cart -->
+    <div class="floating-cart" onclick="toggleCart()">
+        🛒
+        <span class="cart-badge" id="cartBadge">0</span>
+    </div>
 
-        <!-- Demos Grid -->
-        <div class="demos-grid" id="demosGrid">
-            <!-- WebMaster Pro - Meta Demo -->
-            <div class="demo-card featured" data-category="business" style="border: 3px solid #667eea; background: linear-gradient(145deg, #f0f4ff, #ffffff);">
-                <div class="demo-image" style="background: linear-gradient(135deg, #667eea, #764ba2);">🚀</div>
-                <div class="demo-content">
-                    <span class="demo-category" style="background: linear-gradient(135deg, #667eea, #764ba2);">עסקים</span>
-                    <h3 class="demo-title">WebMaster Pro - פלטפורמת אתרים</h3>
-                    <p class="demo-description">
-                        הפלטפורמה שאתם רואים עכשיו! מערכת מכירות מלאה עם 11+ דמואים, עגלת קניות ו-WhatsApp checkout.
-                    </p>
-                    <ul class="demo-features">
-                        <li>11+ דמואים חיים מקצועיים</li>
-                        <li>מערכת מכירות מתקדמת</li>
-                        <li>עגלת קניות חכמה</li>
-                        <li>סינון וחיפוש מתקדם</li>
-                        <li>אנליטיקס ומעקב מכירות</li>
-                    </ul>
-                    <div class="demo-footer">
-                        <div class="demo-price">₪15,000</div>
-                        <div class="demo-actions">
-                            <a href="#" class="btn btn-outline" onclick="scrollToTop()">👀 צפייה (כאן!)</a>
-                            <button class="btn btn-primary" onclick="addToCart('webmaster-pro-platform', 'WebMaster Pro פלטפורמה', 15000, '🚀')">
-                                🛒 הוסף לעגלה
-                            </button>
-                        </div>
-                    </div>
-                </div>
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span>✨</span>
+                <span>פלטפורמה מתקדמת עם 11+ דמואים</span>
             </div>
-
-            <!-- Dr. Michal Rosen - Featured -->
-            <div class="demo-card featured" data-category="health">
-                <div class="demo-image">💉</div>
-                <div class="demo-content">
-                    <span class="demo-category">בריאות ויופי</span>
-                    <h3 class="demo-title">ד"ר מיכל רוזן - אסתטיקה רפואית</h3>
-                    <p class="demo-description">
-                        מרפאה אסתטית יוקרתית עם 6 טיפולים מפורטים, גלריית ציוד מקצועי ועיצוב ברמה עולמית.
-                    </p>
-                    <ul class="demo-features">
-                        <li>6 טיפולים מפורטים עם מחירים</li>
-                        <li>גלריית ציוד מקצועי</li>
-                        <li>טופס הזמנה לווטסאפ</li>
-                        <li>עיצוב ברמת מרפאות יוקרה</li>
-                        <li>מותאם לנייד מושלם</li>
-                    </ul>
-                    <div class="demo-footer">
-                        <div class="demo-price">₪2,800</div>
-                        <div class="demo-actions">
-                            <a href="dr-michal-rosen.html" target="_blank" class="btn btn-outline">👀 צפייה</a>
-                            <button class="btn btn-primary" onclick="addToCart('dr-michal-rosen', 'ד\'\'ר מיכל רוזן', 2800, '💉')">
-                                🛒 הוסף לעגלה
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Ronit Levy -->
-            <div class="demo-card" data-category="education">
-                <div class="demo-image">📚</div>
-                <div class="demo-content">
-                    <span class="demo-category">חינוך</span>
-                    <h3 class="demo-title">ד"ר רונית לוי - מורה פרטית</h3>
-                    <p class="demo-description">
-                        אתר מורה פרטית מקצועי עם 3 מקצועות, עמוד מאמרים עם סינון ומערכת הזמנת שיעורים.
-                    </p>
-                    <ul class="demo-features">
-                        <li>3 מקצועות עם מחירים</li>
-                        <li>6 מאמרים עם סינון</li>
-                        <li>המלצות תלמידים</li>
-                        <li>טופס יצירת קשר מתקדם</li>
-                        <li>FAQ מקיף</li>
-                    </ul>
-                    <div class="demo-footer">
-                        <div class="demo-price">₪2,200</div>
-                        <div class="demo-actions">
-                            <a href="private-teacher.html" target="_blank" class="btn btn-outline">👀 צפייה</a>
-                            <button class="btn btn-primary" onclick="addToCart('ronit-levy', 'ד\'\'ר רונית לוי', 2200, '📚')">
-                                🛒 הוסף לעגלה
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Fitness Trainer -->
-            <div class="demo-card" data-category="health">
-                <div class="demo-image">🏋️</div>
-                <div class="demo-content">
-                    <span class="demo-category">בריאות ויופי</span>
-                    <h3 class="demo-title">מאמן כושר אישי - FitPro</h3>
-                    <p class="demo-description">
-                        אתר מאמן כושר מקצועי עם תוכניות אימון, מחשבון BMI ומערכת הזמנת אימונים אישיים.
-                    </p>
-                    <ul class="demo-features">
-                        <li>5 תוכניות אימון</li>
-                        <li>מחשבון BMI אינטראקטיבי</li>
-                        <li>גלריית התקדמות</li>
-                        <li>לוח זמנים דינמי</li>
-                        <li>מערכת תשלומים</li>
-                    </ul>
-                    <div class="demo-footer">
-                        <div class="demo-price">₪1,800</div>
-                        <div class="demo-actions">
-                            <a href="fitness-coach.html" target="_blank" class="btn btn-outline">👀 צפייה</a>
-                            <button class="btn btn-primary" onclick="addToCart('fitness-trainer', 'מאמן כושר אישי', 1800, '🏋️')">
-                                🛒 הוסף לעגלה
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Yoga Studio -->
-            <div class="demo-card" data-category="health">
-                <div class="demo-image">🧘‍♀️</div>
-                <div class="demo-content">
-                    <span class="demo-category">בריאות ויופי</span>
-                    <h3 class="demo-title">סטודיו יוגה - ZenFlow</h3>
-                    <p class="demo-description">
-                        סטודיו יוגה יוקרתי עם לוח שיעורים, הזמנות אונליין ומדיטציות מודרכות.
-                    </p>
-                    <ul class="demo-features">
-                        <li>לוח שיעורים דינמי</li>
-                        <li>הזמנות אונליין</li>
-                        <li>4 סוגי יוגה</li>
-                        <li>מדיטציות מודרכות</li>
-                        <li>מחירים גמישים</li>
-                    </ul>
-                    <div class="demo-footer">
-                        <div class="demo-price">₪2,000</div>
-                        <div class="demo-actions">
-                            <a href="yoga-studio.html" target="_blank" class="btn btn-outline">👀 צפייה</a>
-                            <button class="btn btn-primary" onclick="addToCart('yoga-studio', 'סטודיו יוגה', 2000, '🧘‍♀️')">
-                                🛒 הוסף לעגלה
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Nutritionist -->
-            <div class="demo-card" data-category="health">
-                <div class="demo-image">🍎</div>
-                <div class="demo-content">
-                    <span class="demo-category">בריאות ויופי</span>
-                    <h3 class="demo-title">תזונאית קלינית - NutriCare</h3>
-                    <p class="demo-description">
-                        תזונאית מקצועית עם מחשבוני תזונה, תפריטים מותאמים ומעקב אישי.
-                    </p>
-                    <ul class="demo-features">
-                        <li>מחשבון קלוריות</li>
-                        <li>תפריטים מותאמים</li>
-                        <li>מעקב משקל</li>
-                        <li>ייעוץ אונליין</li>
-                        <li>מתכונים בריאים</li>
-                    </ul>
-                    <div class="demo-footer">
-                        <div class="demo-price">₪1,900</div>
-                        <div class="demo-actions">
-                            <a href="psychology-clinic.html" target="_blank" class="btn btn-outline">👀 צפייה</a>
-                            <button class="btn btn-primary" onclick="addToCart('nutritionist', 'תזונאית קלינית', 1900, '🍎')">
-                                🛒 הוסף לעגלה
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Law Firm -->
-            <div class="demo-card" data-category="business">
-                <div class="demo-image">⚖️</div>
-                <div class="demo-content">
-                    <span class="demo-category">עסקים</span>
-                    <h3 class="demo-title">משרד עורכי דין - LegalPro</h3>
-                    <p class="demo-description">
-                        משרד עורכי דין יוקרתי עם התמחויות, צוות עורכי דין ומערכת תיאום פגישות.
-                    </p>
-                    <ul class="demo-features">
-                        <li>6 התמחויות משפטיות</li>
-                        <li>פרופילי עורכי דין</li>
-                        <li>מאמרים משפטיים</li>
-                        <li>ייעוץ ראשוני חינם</li>
-                        <li>טפסי יצירת קשר מאובטחים</li>
-                    </ul>
-                    <div class="demo-footer">
-                        <div class="demo-price">₪3,200</div>
-                        <div class="demo-actions">
-                            <a href="law-firm.html" target="_blank" class="btn btn-outline">👀 צפייה</a>
-                            <button class="btn btn-primary" onclick="addToCart('law-firm', 'משרד עורכי דין', 3200, '⚖️')">
-                                🛒 הוסף לעגלה
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Accountant -->
-            <div class="demo-card" data-category="business">
-                <div class="demo-image">💰</div>
-                <div class="demo-content">
-                    <span class="demo-category">עסקים</span>
-                    <h3 class="demo-title">חשבת שכר - Accounting Plus</h3>
-                    <p class="demo-description">
-                        משרד רואי חשבון מקצועי עם שירותי חשבת שכר, הנהלת חשבונות ויעוץ עסקי.
-                    </p>
-                    <ul class="demo-features">
-                        <li>8 שירותים עסקיים</li>
-                        <li>מחשבונים פיננסיים</li>
-                        <li>העלאת מסמכים</li>
-                        <li>יעוץ עסקי</li>
-                        <li>דוחות חודשיים</li>
-                    </ul>
-                    <div class="demo-footer">
-                        <div class="demo-price">₪2,600</div>
-                        <div class="demo-actions">
-                            <a href="accounting-plus.html" target="_blank" class="btn btn-outline">👀 צפייה</a>
-                            <button class="btn btn-primary" onclick="addToCart('accountant', 'חשבת שכר', 2600, '💰')">
-                                🛒 הוסף לעגלה
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Hair Salon -->
-            <div class="demo-card" data-category="creative">
-                <div class="demo-image">💄</div>
-                <div class="demo-content">
-                    <span class="demo-category">יצירתי</span>
-                    <h3 class="demo-title">מספרה BELLA - סטיילינג יוקרתי</h3>
-                    <p class="demo-description">
-                        מספרה יוקרתי עם הזמנות אונליין, גלריית עבודות ומחירון מפורט.
-                    </p>
-                    <ul class="demo-features">
-                        <li>הזמנות אונליין</li>
-                        <li>גלריית עבודות</li>
-                        <li>10+ שירותים</li>
-                        <li>צוות מעצבי שיער</li>
-                        <li>מחירון שקוף</li>
-                    </ul>
-                    <div class="demo-footer">
-                        <div class="demo-price">₪1,700</div>
-                        <div class="demo-actions">
-                            <a href="salon-bella.html" target="_blank" class="btn btn-outline">👀 צפייה</a>
-                            <button class="btn btn-primary" onclick="addToCart('hair-salon', 'מספרה BELLA', 1700, '💄')">
-                                🛒 הוסף לעגלה
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Interior Design -->
-            <div class="demo-card" data-category="creative">
-                <div class="demo-image">🏠</div>
-                <div class="demo-content">
-                    <span class="demo-category">יצירתי</span>
-                    <h3 class="demo-title">עיצוב פנים יוקרתי - DesignSpace</h3>
-                    <p class="demo-description">
-                        סטודיו עיצוב פנים יוקרתי עם פורטפוליו מרשים, סגנונות עיצוב ותהליך עבודה שקוף.
-                    </p>
-                    <ul class="demo-features">
-                        <li>פורטפוליו מרשים</li>
-                        <li>5 סגנונות עיצוב</li>
-                        <li>תהליך עבודה מפורט</li>
-                        <li>ייעוץ ראשוני</li>
-                        <li>הדמיות תלת-מימד</li>
-                    </ul>
-                    <div class="demo-footer">
-                        <div class="demo-price">₪3,500</div>
-                        <div class="demo-actions">
-                            <a href="interior-design.html" target="_blank" class="btn btn-outline">👀 צפייה</a>
-                            <button class="btn btn-primary" onclick="addToCart('interior-design', 'עיצוב פנים יוקרתי', 3500, '🏠')">
-                                🛒 הוסף לעגלה
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Real Estate -->
-            <div class="demo-card" data-category="business">
-                <div class="demo-image">🏡</div>
-                <div class="demo-content">
-                    <span class="demo-category">עסקים</span>
-                    <h3 class="demo-title">מתווך נדל"ן - RealEstate Pro</h3>
-                    <p class="demo-description">
-                        פלטפורמת נדל"ן מתקדמת עם מאגר נכסים, חיפוש מתקדם ומחשבוני משכנתא.
-                    </p>
-                    <ul class="demo-features">
-                        <li>מאגר נכסים דינמי</li>
-                        <li>חיפוש מתקדם</li>
-                        <li>מחשבון משכנתא</li>
-                        <li>סיורים וירטואליים</li>
-                        <li>ייעוץ השקעות</li>
-                    </ul>
-                    <div class="demo-footer">
-                        <div class="demo-price">₪4,200</div>
-                        <div class="demo-actions">
-                            <a href="real-estate.html" target="_blank" class="btn btn-outline">👀 צפייה</a>
-                            <button class="btn btn-primary" onclick="addToCart('real-estate', 'מתווך נדל\'\'ן', 4200, '🏡')">
-                                🛒 הוסף לעגלה
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Call to Action -->
-        <div style="text-align: center; margin: 80px 0;">
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 36px; margin-bottom: 20px;">
-                מוכן להתחיל?
-            </h2>
-            <p style="font-size: 18px; color: var(--text-light); margin-bottom: 30px;">
-                בחר את הדמואים שמתאימים לך והתחל למכור היום
+            
+            <h1 class="hero-title">WebMaster Pro</h1>
+            <p class="hero-description">
+                פלטפורמת בניית אתרים מתקדמת עם אנימציות ברמת Framer.
+                עיצובים מקצועיים, פונקציונליות מלאה, וחוויית משתמש מהפכנית.
             </p>
-            <button class="btn btn-success" onclick="scrollToTop()" style="font-size: 18px; padding: 18px 40px;">
-                🚀 חזור לתחילת הגלריה
-            </button>
+
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="11">0</span>
+                    <span class="stat-label">דמואים חיים</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="500">0</span>
+                    <span class="stat-label">לקוחות</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="24">0</span>
+                    <span class="stat-label">שעות תמיכה</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="100">0</span>
+                    <span class="stat-label">% הצלחה</span>
+                </div>
+            </div>
+
+            <div class="hero-cta">
+                <a href="#demos" class="cta-button cta-primary">
+                    🚀 צפה בדמואים
+                </a>
+                <a href="#contact" class="cta-button cta-secondary">
+                    💬 התחל עכשיו
+                </a>
+            </div>
         </div>
-    </main>
+    </section>
+
+    <!-- Demos Section -->
+    <section class="demos-section" id="demos">
+        <div class="section-header reveal">
+            <h2 class="section-title">הדמואים החיים שלנו</h2>
+            <p class="section-subtitle">
+                כל דמו הוא אתר מלא ומקצועי עם אנימציות מתקדמות, מוכן למכירה ושימוש מיידי
+            </p>
+        </div>
+        
+        <div class="demos-grid" id="demosGrid">
+            <!-- Demo cards will be inserted here -->
+        </div>
+    </section>
 
     <script>
-        // Shopping Cart System
-        let cart = JSON.parse(localStorage.getItem('webmaster-pro-cart')) || [];
+        // Demo data with correct file names from GitHub
+        const demos = [
+            {
+                id: 'dr-michal-rosen',
+                title: 'Dr. Michal Rosen',
+                category: 'רפואה ויופי',
+                image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                description: 'מרפאה לאסתטיקה רפואית עם עיצוב יוקרתי, הזמנות אונליין חכמות וגלריית טיפולים אינטראקטיבית.',
+                features: ['הזמנות אונליין', 'גלריית טיפולים', 'חוות דעת לקוחות', 'מערכת תשלומים'],
+                price: '₪1,800',
+                file: 'dr-michal-rosen.html',
+                featured: false
+            },
+            {
+                id: 'law-firm',
+                title: 'עורכי דין פרימיום',
+                category: 'משפטים ומקצועות חופשיים',
+                image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                description: 'משרד עורכי דין מוביל עם עיצוב מהמם, מערכת ניהול תיקים וייעוץ משפטי אונליין.',
+                features: ['ייעוץ אונליין', 'ניהול תיקים', 'בלוג משפטי', 'צוות עורכי דין'],
+                price: '₪2,200',
+                file: 'Law-Firm.html',
+                featured: false
+            },
+            {
+                id: 'private-teacher',
+                title: 'מורה פרטית מקצועית',
+                category: 'חינוך והדרכה',
+                image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                description: 'פלטפורמת הוראה פרטית עם מערכת הזמנות חכמה, לוח זמנים דיגיטלי וכלי למידה אינטראקטיביים.',
+                features: ['הזמנת שיעורים', 'לוח זמנים', 'חומרי לימוד', 'מעקב התקדמות'],
+                price: '₪1,600',
+                file: 'Private-Teacher.html',
+                featured: false
+            },
+            {
+                id: 'fitness-coach',
+                title: 'FitnessPro Coach',
+                category: 'ספורט ובריאות',
+                image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                description: 'סטודיו כושר דיגיטלי עם תוכניות אימון אישיות, מעקב התקדמות ותזונה מותאמת אישית.',
+                features: ['תוכניות אימון', 'מעקב התקדמות', 'תזונה אישית', 'קהילת מתרגלים'],
+                price: '₪1,900',
+                file: 'Fitness-Coach.html',
+                featured: false
+            },
+            {
+                id: 'psychology-clinic',
+                title: 'מרפאה פסיכולוגית',
+                category: 'בריאות הנפש',
+                image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                description: 'מרכז פסיכולוגיה מתקדם עם הזמנות דיסקרטיות, צוות מומחים וטיפולים מגוונים.',
+                features: ['הזמנות דיסקרטיות', 'צוות מומחים', 'טיפולי קבוצה', 'מאמרים מקצועיים'],
+                price: '₪2,000',
+                file: 'Psychology-Clinic.html',
+                featured: false
+            },
+            {
+                id: 'salon-bella',
+                title: 'BELLA Salon & Spa',
+                category: 'יופי ופמפוס',
+                image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                description: 'מספרה וספא יוקרתיים עם עיצוב חלומי, הזמנות אונליין וגלריית עבודות מרהיבה.',
+                features: ['הזמנות אונליין', 'גלריית עבודות', 'מחירון מפורט', 'מועדון לקוחות VIP'],
+                price: '₪1,700',
+                file: 'Salon-Bella.html',
+                featured: false
+            },
+            {
+                id: 'yoga-studio',
+                title: 'Serenity Yoga Studio',
+                category: 'רוגע ורוחניות',
+                image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                description: 'סטודיו יוגה רוחני עם שיעורים אונליין, מדיטציות מודרכות ומורים מוסמכים.',
+                features: ['שיעורים אונליין', 'מדיטציות מודרכות', 'מורים מוסמכים', 'אירועי קהילה'],
+                price: '₪1,500',
+                file: 'yoga-studio.html',
+                featured: false
+            },
+            {
+                id: 'accounting-plus',
+                title: 'Accounting Plus',
+                category: 'עסקים ופיננסים',
+                image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                description: 'משרד רואי חשבון מתקדם עם מחשבונים פיננסיים, דוחות אוטומטיים ומערכת ניהול לקוחות.',
+                features: ['מחשבונים פיננסיים', 'דוחות אוטומטיים', 'ניהול לקוחות', 'ייעוץ עסקי'],
+                price: '₪2,600',
+                file: 'accounting-plus.html',
+                featured: true
+            },
+            {
+                id: 'real-estate',
+                title: 'RealEstate Pro',
+                category: 'נדל״ן יוקרתי',
+                image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                description: 'פלטפורמת נדל"ן יוקרתית עם נכסי פרימיום, מחשבון משכנתא מתקדם ושירותי VIP למשקיעים.',
+                features: ['נכסי יוקרה', 'מחשבון משכנתא', 'שירותי VIP', 'השקעות נדל״ן'],
+                price: '₪4,200',
+                file: 'real-estate.html',
+                featured: true
+            }
+        ];
 
-        // Update cart display
-        function updateCartDisplay() {
-            const cartCount = document.getElementById('cartCount');
-            const cartItems = document.getElementById('cartItems');
-            const cartTotal = document.getElementById('cartTotal');
-            
-            cartCount.textContent = cart.length;
-            
+        // Cart functionality
+        let cart = [];
+
+        function addToCart(demo) {
+            cart.push(demo);
+            updateCartBadge();
+            showNotification(`${demo.title} נוסף לעגלה!`);
+        }
+
+        function updateCartBadge() {
+            document.getElementById('cartBadge').textContent = cart.length;
+        }
+
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 30px;
+                background: var(--gradient-primary);
+                color: var(--light);
+                padding: 16px 24px;
+                border-radius: 12px;
+                font-weight: 600;
+                z-index: 10000;
+                transform: translateX(100%);
+                transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        function toggleCart() {
             if (cart.length === 0) {
-                cartItems.innerHTML = `
-                    <div class="cart-empty">
-                        <div class="cart-empty-icon">🛒</div>
-                        <h3>העגלה ריקה</h3>
-                        <p>הוסף דמואים לעגלה כדי להמשיך</p>
+                showNotification('העגלה ריקה! הוסף דמואים לעגלה.');
+                return;
+            }
+
+            const cartItems = cart.map(item => `• ${item.title} - ${item.price}`).join('\n');
+            const total = cart.reduce((sum, item) => sum + parseInt(item.price.replace('₪', '').replace(',', '')), 0);
+            
+            const message = `🛒 העגלה שלך:\n${cartItems}\n\n💰 סה"כ: ₪${total.toLocaleString()}\n\nהאם תרצה להמשיך להזמנה?`;
+            
+            if (confirm(message)) {
+                const whatsappMessage = `שלום! אני מעוניין להזמין:\n${cartItems}\n\nסה"כ: ₪${total.toLocaleString()}`;
+                window.open(`https://wa.me/972501234567?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
+            }
+        }
+
+        // Render demos
+        function renderDemos() {
+            const grid = document.getElementById('demosGrid');
+            
+            if (!grid) {
+                return;
+            }
+            
+            // Clear existing content
+            grid.innerHTML = '';
+            
+            demos.forEach((demo, index) => {
+                const card = document.createElement('div');
+                card.className = `demo-card ${demo.featured ? 'featured' : ''}`;
+                card.style.animationDelay = `${index * 0.1}s`;
+                
+                card.innerHTML = `
+                    <div class="demo-image" style="background-image: url('${demo.image}');">
+                        <div class="overlay"></div>
+                    </div>
+                    <div class="demo-content">
+                        <span class="demo-category">${demo.category}</span>
+                        <h3 class="demo-title">${demo.title}</h3>
+                        <p class="demo-description">${demo.description}</p>
+                        <ul class="demo-features">
+                            ${demo.features.map(feature => `<li>${feature}</li>`).join('')}
+                        </ul>
+                        <div class="demo-footer">
+                            <span class="demo-price">${demo.price}</span>
+                            <div class="demo-actions">
+                                <a href="${demo.file}" target="_blank" class="demo-button demo-button-view">
+                                    👁️ צפה
+                                </a>
+                                <button onclick="addToCart(demos[${index}])" class="demo-button demo-button-cart">
+                                    🛒 הוסף
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 `;
-                cartTotal.textContent = '₪0';
-            } else {
-                cartItems.innerHTML = cart.map((item, index) => `
-                    <div class="cart-item">
-                        <div class="cart-item-image">${item.icon}</div>
-                        <div class="cart-item-info">
-                            <div class="cart-item-title">${item.name}</div>
-                            <div class="cart-item-price">₪${item.price.toLocaleString()}</div>
-                        </div>
-                        <button class="cart-item-remove" onclick="removeFromCart(${index})">✕</button>
-                    </div>
-                `).join('');
                 
-                const total = cart.reduce((sum, item) => sum + item.price, 0);
-                cartTotal.textContent = `₪${total.toLocaleString()}`;
-            }
-        }
-
-        // Add to cart
-        function addToCart(id, name, price, icon) {
-            // Check if item already exists
-            const existingItem = cart.find(item => item.id === id);
-            if (existingItem) {
-                showMessage('המוצר כבר קיים בעגלה!', 'warning');
-                return;
-            }
-            
-            cart.push({ id, name, price, icon });
-            localStorage.setItem('webmaster-pro-cart', JSON.stringify(cart));
-            updateCartDisplay();
-            showSuccessMessage();
-        }
-
-        // Remove from cart
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            localStorage.setItem('webmaster-pro-cart', JSON.stringify(cart));
-            updateCartDisplay();
-        }
-
-        // Toggle cart
-        function toggleCart() {
-            const sidebar = document.getElementById('cartSidebar');
-            const overlay = document.getElementById('cartOverlay');
-            
-            sidebar.classList.toggle('open');
-            overlay.classList.toggle('open');
-        }
-
-        // Close cart
-        function closeCart() {
-            const sidebar = document.getElementById('cartSidebar');
-            const overlay = document.getElementById('cartOverlay');
-            
-            sidebar.classList.remove('open');
-            overlay.classList.remove('open');
-        }
-
-        // Show success message
-        function showSuccessMessage() {
-            const message = document.getElementById('successMessage');
-            message.classList.add('show');
-            
-            setTimeout(() => {
-                message.classList.remove('show');
-            }, 2000);
-        }
-
-        // Show message
-        function showMessage(text, type = 'success') {
-            // Create message element
-            const message = document.createElement('div');
-            message.className = `success-message show`;
-            message.innerHTML = `
-                <div class="success-icon">${type === 'success' ? '✅' : '⚠️'}</div>
-                <h3>${text}</h3>
-            `;
-            
-            document.body.appendChild(message);
-            
-            setTimeout(() => {
-                message.classList.remove('show');
-                setTimeout(() => document.body.removeChild(message), 300);
-            }, 2000);
-        }
-
-        // Checkout process
-        function checkout() {
-            if (cart.length === 0) {
-                showMessage('העגלה ריקה!', 'warning');
-                return;
-            }
-            
-            const total = cart.reduce((sum, item) => sum + item.price, 0);
-            const items = cart.map(item => `• ${item.name} - ₪${item.price.toLocaleString()}`).join('\n');
-            
-            const message = `שלום! אני מעוניין/ת להזמין את המוצרים הבאים:
-
-${items}
-
-💰 סה"כ: ₪${total.toLocaleString()}
-
-🔗 מאתר: WebMaster Pro
-📧 אשמח לקבל פרטי תשלום והוראות המשך.
-
-תודה!`;
-
-            const whatsappUrl = `https://wa.me/972501234567?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-            
-            // Clear cart after checkout
-            setTimeout(() => {
-                cart = [];
-                localStorage.setItem('webmaster-pro-cart', JSON.stringify(cart));
-                updateCartDisplay();
-                closeCart();
-                showMessage('ההזמנה נשלחה בהצלחה!');
-            }, 1000);
-        }
-
-        // Filter demos
-        function filterDemos(category) {
-            const tabs = document.querySelectorAll('.nav-tab');
-            const demos = document.querySelectorAll('.demo-card');
-            
-            // Update active tab
-            tabs.forEach(tab => tab.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            const filter = category;
-            
-            demos.forEach(demo => {
-                if (filter === 'all' || demo.dataset.category === filter) {
-                    demo.style.display = 'block';
-                    setTimeout(() => {
-                        demo.style.opacity = '1';
-                        demo.style.transform = 'scale(1)';
-                    }, 100);
-                } else {
-                    demo.style.opacity = '0';
-                    demo.style.transform = 'scale(0.8)';
-                    setTimeout(() => {
-                        demo.style.display = 'none';
-                    }, 300);
-                }
+                grid.appendChild(card);
             });
         }
 
-        // Scroll to top
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Custom cursor
+        function initCustomCursor() {
+            const cursor = document.querySelector('.custom-cursor');
+            let mouseX = 0, mouseY = 0;
+            let cursorX = 0, cursorY = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+
+            function animateCursor() {
+                cursorX += (mouseX - cursorX) * 0.1;
+                cursorY += (mouseY - cursorY) * 0.1;
+                cursor.style.left = cursorX + 'px';
+                cursor.style.top = cursorY + 'px';
+                requestAnimationFrame(animateCursor);
+            }
+            animateCursor();
+
+            // Hover effects
+            document.querySelectorAll('a, button, .demo-card').forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+            });
         }
 
         // Counter animation
@@ -1211,55 +1101,102 @@ ${items}
             const counters = document.querySelectorAll('.stat-number');
             
             counters.forEach(counter => {
-                const target = parseInt(counter.textContent.replace(/\D/g, ''));
+                const target = parseInt(counter.getAttribute('data-target'));
                 const duration = 2000;
-                const increment = target / (duration / 16);
-                let current = 0;
+                const start = performance.now();
                 
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                        counter.textContent = counter.textContent.replace(/\d+/, target);
-                        clearInterval(timer);
-                    } else {
-                        counter.textContent = counter.textContent.replace(/\d+/, Math.floor(current));
+                function updateCounter(currentTime) {
+                    const elapsed = currentTime - start;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const current = Math.floor(progress * target);
+                    counter.textContent = current;
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCounter);
                     }
-                }, 16);
+                }
+                
+                requestAnimationFrame(updateCounter);
             });
         }
 
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            updateCartDisplay();
-            
-            // Animate counters when page loads
-            setTimeout(animateCounters, 500);
-            
-            // Add scroll animations
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver(function(entries) {
+        // Scroll reveal
+        function initScrollReveal() {
+            const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('fade-in');
+                        entry.target.classList.add('revealed');
+                        
+                        // Animate counters when stats section is visible
+                        if (entry.target.classList.contains('hero-stats')) {
+                            animateCounters();
+                        }
                     }
                 });
-            }, observerOptions);
+            }, { threshold: 0.1 });
 
-            // Observe demo cards
-            document.querySelectorAll('.demo-card').forEach(card => {
-                observer.observe(card);
+            document.querySelectorAll('.reveal, .hero-stats').forEach(el => {
+                observer.observe(el);
             });
-        });
+        }
 
-        // Keyboard shortcuts
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeCart();
-            }
+        // Navigation scroll effect
+        function handleNavScroll() {
+            const nav = document.getElementById('framerNav');
+            const scrolled = window.scrollY > 50;
+            nav.classList.toggle('scrolled', scrolled);
+        }
+
+        // Smooth scroll
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            // Render demos FIRST
+            renderDemos();
+            
+            // Hide loader
+            setTimeout(() => {
+                document.getElementById('framerLoader').classList.add('hidden');
+            }, 2000);
+            
+            // Initialize features (without cursor)
+            initScrollReveal();
+            initSmoothScroll();
+            
+            // Event listeners
+            window.addEventListener('scroll', handleNavScroll);
+            
+            // Add parallax effect to hero
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const heroContent = document.querySelector('.hero-content');
+                if (heroContent) {
+                    heroContent.style.transform = `translateY(${scrolled * 0.1}px)`;
+                }
+            });
+            
+            // Force reveal animations after a short delay
+            setTimeout(() => {
+                document.querySelectorAll('.reveal').forEach(el => {
+                    el.classList.add('revealed');
+                });
+                // Animate counters
+                animateCounters();
+            }, 500);
         });
     </script>
 </body>
